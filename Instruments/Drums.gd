@@ -22,12 +22,13 @@ func play_drums():
 	
 	#Deal Damage to Enemy on Collision
 	#Animation
-	yield(get_tree().create_timer(8), "timeout")
+	yield(get_tree().create_timer(0.1), "timeout")
 	var last = playbackPos
-	playbackPos = $Drums/AudioStreamPlayer2D.get_playback_position()
-	if last == playbackPos:
-		playbackPos = 0
+	#playbackPos = $Drums/AudioStreamPlayer2D.get_playback_position()
+	#if last == playbackPos:
+	#	playbackPos = 0
 	$Drums/AudioStreamPlayer2D.stop()
 	soundWave.free()
 	ready = true
+	
 	
