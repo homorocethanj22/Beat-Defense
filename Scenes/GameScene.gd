@@ -3,10 +3,12 @@ extends Node
 var map_node
 var drums
 var enemy = preload("res://Monster/Monster.tscn")
-var map_file = "res://Sounds/120_bpm_music.mboy"
-# Monsters that spawn every 0.5 seconds or 60/120bpm
-var wave_data = [["Monster", 2], ["Monster", 2], ["Monster", 2], ["Monster", 2],
-	["Monster", 2], ["Monster", 2], ["Monster", 2], ["Monster", 2]]
+# Monsters that spawn every x seconds
+var wave_data = [["Monster", 2.45], ["Monster", 1.45], ["Monster", 1], ["Monster", 1],
+	["Monster", 1], ["Monster", 1], ["Monster", 1], ["Monster", 1],
+	["Monster", 1], ["Monster", 1], ["Monster", 1], ["Monster", 1],
+	["Monster", 1], ["Monster", 1], ["Monster", 1], ["Monster", 1]
+	]
 
 var current_wave = 0
 var enemies_in_wave = 0
@@ -16,10 +18,10 @@ onready var child_timer = get_node("SongTimer/ChildTimer")
 
 
 func _ready():
-	timer.set_wait_time(2)
+	timer.set_wait_time(0.45) # 60/132 bpm = 0.45454545
 	timer.start()
 	
-	child_timer.set_wait_time(2)
+	child_timer.set_wait_time(0.45)
 	
 
 	map_node = get_node("Map1")
