@@ -2,7 +2,16 @@
 
 [ext_resource path="res://Monster/character_zombie_run1.png" type="Texture" id=1]
 [ext_resource path="res://Monster/Monster.gd" type="Script" id=2]
-[ext_resource path="res://Monster/KinematicMonster2D.gd" type="Script" id=3]
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends KinematicBody2D
+var health = 100
+
+func hit(damage):
+	health = health - damage
+	if (health <= 0):
+		queue_free()
+"
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 34, 46 )
@@ -11,7 +20,7 @@ extents = Vector2( 34, 46 )
 script = ExtResource( 2 )
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="."]
-script = ExtResource( 3 )
+script = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="KinematicBody2D"]
 
