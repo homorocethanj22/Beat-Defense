@@ -1,10 +1,15 @@
 extends Area2D
 
 
-var enemies = []
+var damage = 100
 func free():
 	queue_free()
 
 	
 
+
+
+
+func _on_SoundWave_body_entered(body):
+	body.get_parent().hit(damage)
 

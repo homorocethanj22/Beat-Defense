@@ -4,22 +4,26 @@ var map_node
 var drums
 var enemy = preload("res://Monster/Monster.tscn")
 # Monsters that spawn every x seconds
-var wave_data = [["Monster", 2.45], ["Monster", 1.45], ["Monster", 1], ["Monster", 1],
-	["Monster", 1], ["Monster", 1], ["Monster", 1], ["Monster", 1],
-	["Monster", 1], ["Monster", 1], ["Monster", 1], ["Monster", 1],
-	["Monster", 1], ["Monster", 1], ["Monster", 1], ["Monster", 1]
-	]
+var wave_data = [["Monster", 1], ["Monster", 1], ["Monster", 1], ["Monster", 1],
+	["Monster", 1], ["Monster", 1], ["Monster", 1], ["Monster", 1], ["Monster", 1], 
+	["Monster", 1], ["Monster", 1], ["Monster", 1], ["Monster", 1], ["Monster", 0.5], 
+	["Monster", 0.5], ["Monster", 0.5], ["Monster", 0.5], ["Monster", 0.5], ["Monster", 0.25], 
+	["Monster", 0.25], ["Monster", 0.25], ["Monster", 0.25], ["Monster", 0.25], ["Monster", 0.25], 
+	["Monster", 0.25], ["Monster", 0.25], ["Monster", 0.25]]
 
 var current_wave = 0
 var enemies_in_wave = 0
 
 onready var timer = get_node("SongTimer")
 onready var child_timer = get_node("SongTimer/ChildTimer")
-
+onready var song_start = get_node("SongStart")
 
 func _ready():
 	timer.set_wait_time(0.45) # 60/132 bpm = 0.45454545
-	timer.start()
+	#timer.start()
+	
+	song_start.set_wait_time(11.6)
+	song_start.start()
 	
 	child_timer.set_wait_time(0.45)
 	
@@ -55,3 +59,8 @@ func _on_ChildTimer_timeout():
 	drums.ready = false
 	child_timer.stop()
 	timer.start()
+
+
+func _on_SongStart_timeout():
+	$AudioStreamPlayer2D.play()
+	song_start.stop()

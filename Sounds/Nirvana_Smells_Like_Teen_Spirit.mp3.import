@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Nirvana_Smells_Like_Teen_Spirit.mp3-993e054d0a64da8cc679174c7863b57b.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Nirvana_Smells_Like_Teen_Spirit.mp3"
+dest_files=[ "res://.import/Nirvana_Smells_Like_Teen_Spirit.mp3-993e054d0a64da8cc679174c7863b57b.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

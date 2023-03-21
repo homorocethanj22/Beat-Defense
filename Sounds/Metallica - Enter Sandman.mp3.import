@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Metallica - Enter Sandman.mp3-cccffcb106aa4ef65caa39c46d3cfc69.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Metallica - Enter Sandman.mp3"
+dest_files=[ "res://.import/Metallica - Enter Sandman.mp3-cccffcb106aa4ef65caa39c46d3cfc69.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
