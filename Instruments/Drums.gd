@@ -23,6 +23,8 @@ func _unhandled_key_input(event):
 
 func play_drums():
 	#play_window.start()
+	
+	$Drums.play("beat")
 
 	var sound_wave = soundWavePath.instance()
 	add_child(sound_wave)
@@ -51,4 +53,3 @@ func play_drums():
 
 func _on_Area2D_body_entered(body):
 	enemy_array.append(body.get_parent())
-
