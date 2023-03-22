@@ -2,6 +2,7 @@ extends Area2D
 
 
 var damage = 100
+
 func free():
 	queue_free()
 

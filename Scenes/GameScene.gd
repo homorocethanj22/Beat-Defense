@@ -5,11 +5,11 @@ var drums
 var enemy = preload("res://Monster/Monster.tscn")
 # Monsters that spawn every x seconds
 var wave_data = [["Monster", 1], ["Monster", 1], ["Monster", 1], ["Monster", 1],
-	["Monster", 1], ["Monster", 1], ["Monster", 1], ["Monster", 1], ["Monster", 1], 
+	["Monster", 1], ["Monster", 1], ["Monster", 0.8], ["Monster", 1], ["Monster", 1], 
 	["Monster", 1], ["Monster", 1], ["Monster", 1], ["Monster", 1], ["Monster", 0.5], 
-	["Monster", 0.5], ["Monster", 0.5], ["Monster", 0.5], ["Monster", 0.5], ["Monster", 0.25], 
-	["Monster", 0.25], ["Monster", 0.25], ["Monster", 0.25], ["Monster", 0.25], ["Monster", 0.25], 
-	["Monster", 0.25], ["Monster", 0.25], ["Monster", 0.25]]
+	["Monster", 0.5], ["Monster", 0.5], ["Monster", 0.5], ["Monster", 0.5], ["Monster", 0.5], 
+	["Monster", 0.5], ["Monster", 0.5], ["Monster", 0.5], ["Monster", 0.5], ["Monster", 0.5], 
+	["Monster", 0.4], ["Monster", 0.4], ["Monster", 0.5]]
 
 var current_wave = 0
 var enemies_in_wave = 0

@@ -26,8 +26,9 @@ func _unhandled_key_input(event):
 func play_drums():
 	ready = false
 	#play_window.start()
-	
+
 	$Drums.play("beat")
+
 
 	var sound_wave = soundWavePath.instance()
 	add_child(sound_wave)
@@ -36,9 +37,11 @@ func play_drums():
 
 	yield(get_tree().create_timer(0.2), "timeout")
 
+
 	#$Drums/AudioStreamPlayer2D.stop()
 	sound_wave.free()
-	
+
+	$Drums.frame = 0
 	note += 1
 	if note > len(playback_array) - 1:
 		note = 0
