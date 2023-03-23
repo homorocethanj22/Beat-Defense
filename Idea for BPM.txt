@@ -1,0 +1,7 @@
+Idea for BPM
+
+pulsing icon that lets the player know what the bpm is
+if player taps along to the bpm they do extra damage?
+
+let each tile be a beat and adjust the enemy's speed to cross each tile based off of the song's bpm.
+this way we can let the player place the instruments wherever they want since each tile is a beat. 
