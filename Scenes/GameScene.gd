@@ -31,8 +31,6 @@ func _ready():
 	map_node = get_node("Map1")
 	drums = map_node.get_child(3)
 	
-	start_next_wave()
-	
 
 # Spawning Functions
 func start_next_wave():
