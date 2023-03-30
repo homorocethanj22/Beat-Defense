@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Maps/Map1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/UI/Input/tile_0086.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Assets/UI/Input/right.png" type="Texture" id=7]
 [ext_resource path="res://Assets/UI/Input/pause.png" type="Texture" id=8]
 [ext_resource path="res://Scenes/UI.gd" type="Script" id=9]
+[ext_resource path="res://Maps/Map2.tscn" type="PackedScene" id=10]
 
 [node name="GameScene" type="Node"]
 script = ExtResource( 3 )
@@ -81,6 +82,8 @@ stream = ExtResource( 4 )
 
 [node name="House" parent="." instance=ExtResource( 5 )]
 position = Vector2( 625, 337 )
+
+[node name="Map2" parent="." instance=ExtResource( 10 )]
 
 [connection signal="pressed" from="UI/HUD/GameControls/PausePlay" to="UI" method="_on_PausePlay_pressed"]
 [connection signal="pressed" from="UI/HUD/GameControls/SpeedUp" to="UI" method="_on_SpeedUp_pressed"]
