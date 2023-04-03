@@ -1,0 +1,41 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Assets/UI/Art/Monster Walk/Damage Frame 2.png" type="Texture" id=1]
+[ext_resource path="res://Assets/UI/Art/Monster Walk/Walk Frame 1.png" type="Texture" id=2]
+[ext_resource path="res://Assets/UI/Art/Monster Walk/Walk Frame 2.png" type="Texture" id=3]
+[ext_resource path="res://Assets/UI/Art/Monster Walk/Walk Frame 3.png" type="Texture" id=4]
+[ext_resource path="res://Assets/UI/Art/Monster Walk/Walk Frame 4.png" type="Texture" id=5]
+[ext_resource path="res://Assets/UI/Art/Monster Walk/Damage Frame 1.png" type="Texture" id=6]
+[ext_resource path="res://Assets/UI/Art/Monster Walk/Damage Frame 4.png" type="Texture" id=7]
+[ext_resource path="res://Monsters/Monster1.gd" type="Script" id=8]
+[ext_resource path="res://Assets/UI/Art/Monster Walk/Damage Frame 3.png" type="Texture" id=9]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 21, 28.5 )
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 6 ), ExtResource( 1 ), ExtResource( 9 ), ExtResource( 7 ) ],
+"loop": false,
+"name": "Damage Walk",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "walk",
+"speed": 5.0
+} ]
+
+[node name="Monster2" type="PathFollow2D"]
+rotate = false
+script = ExtResource( 8 )
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
+position = Vector2( 3, -0.5 )
+shape = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="KinematicBody2D"]
+frames = SubResource( 3 )
+animation = "walk"
