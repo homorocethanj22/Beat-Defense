@@ -2,14 +2,20 @@ extends Node
 
 var map_node
 var drums
-var enemy = preload("res://Monster/Monster.tscn")
-# Monsters that spawn every x seconds
-var wave_data = [["Monster", 1], ["Monster", 1], ["Monster", 1], ["Monster", 1],
-	["Monster", 1], ["Monster", 1], ["Monster", 0.8], ["Monster", 1], ["Monster", 1], 
-	["Monster", 1], ["Monster", 1], ["Monster", 1], ["Monster", 1], ["Monster", 0.5], 
-	["Monster", 0.5], ["Monster", 0.5], ["Monster", 0.5], ["Monster", 0.5], ["Monster", 0.5], 
-	["Monster", 0.5], ["Monster", 0.5], ["Monster", 0.5], ["Monster", 0.5], ["Monster", 0.5], 
-	["Monster", 0.4], ["Monster", 0.4], ["Monster", 0.5]]
+
+## Enemies/Monsters
+var enemy1 = preload("res://Monsters/Monster1.tscn")
+var enemy2 = preload("res://Monsters/Monster2.tscn")
+var enemy3 = preload("res://Monsters/Monster3.tscn")
+var enemy4 = preload("res://Monsters/Monster4.tscn")
+
+## Spawning Data: ["Monster#", seconds]
+var wave_data = [["Monster1", 1], ["Monster1", 1], ["Monster1", 1], ["Monster1", 1],
+	["Monster1", 1], ["Monster1", 1], ["Monster2", 0.8], ["Monster2", 1], ["Monster2", 1], 
+	["Monster2", 1], ["Monster2", 1], ["Monster2", 1], ["Monster2", 1], ["Monster2", 0.5], 
+	["Monster3", 0.5], ["Monster3", 0.5], ["Monster3", 0.5], ["Monster3", 0.5], ["Monster3", 0.5], 
+	["Monster3", 0.5], ["Monster3", 0.5], ["Monster4", 0.5], ["Monster4", 0.5], ["Monster4", 0.5], 
+	["Monster4", 0.4], ["Monster4", 0.4], ["Monster4", 0.5]]
 
 var current_wave = 0
 var enemies_in_wave = 0
@@ -31,6 +37,7 @@ func _ready():
 	map_node = get_node("Map1")
 	drums = map_node.get_child(3)
 	
+	start_next_wave()
 
 # Spawning Functions
 func start_next_wave():
@@ -42,9 +49,22 @@ func start_next_wave():
 
 func spawn_enemies(wave_data):
 	for i in wave_data:
-		var new_enemy = enemy.instance()
-		map_node.get_node("Path").add_child(new_enemy, true)
-		yield(get_tree().create_timer(i[1]), "timeout")
+		if String(i[0]) == "Monster1":
+			var new_enemy = enemy1.instance()
+			map_node.get_node("Path").add_child(new_enemy, true)
+			yield(get_tree().create_timer(i[1]), "timeout")
+		if String(i[0]) == "Monster2":
+			var new_enemy2 = enemy2.instance()
+			map_node.get_node("Path").add_child(new_enemy2, true)
+			yield(get_tree().create_timer(i[1]), "timeout")
+		if String(i[0]) == "Monster3":
+			var new_enemy3 = enemy3.instance()
+			map_node.get_node("Path").add_child(new_enemy3, true)
+			yield(get_tree().create_timer(i[1]), "timeout")
+		if String(i[0]) == "Monster4":
+			var new_enemy4 = enemy4.instance()
+			map_node.get_node("Path").add_child(new_enemy4, true)
+			yield(get_tree().create_timer(i[1]), "timeout")
 
 
 func _on_SongTimer_timeout():
