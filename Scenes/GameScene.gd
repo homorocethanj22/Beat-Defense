@@ -4,10 +4,10 @@ var map_node
 var drums
 
 ## Enemies/Monsters
-var enemy1 = preload("res://Monsters/Monster1.tscn")
-var enemy2 = preload("res://Monsters/Monster2.tscn")
-var enemy3 = preload("res://Monsters/Monster3.tscn")
-var enemy4 = preload("res://Monsters/Monster4.tscn")
+var enemy1 = preload("res://Monster/Monster1.tscn")
+var enemy2 = preload("res://Monster/Monster2.tscn")
+var enemy3 = preload("res://Monster/Monster3.tscn")
+var enemy4 = preload("res://Monster/Monster4.tscn")
 
 ## Spawning Data: ["Monster#", seconds]
 var wave_data = [["Monster1", 1], ["Monster1", 1], ["Monster1", 1], ["Monster1", 1],
