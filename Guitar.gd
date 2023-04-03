@@ -13,20 +13,16 @@ func _unhandled_key_input(event):
 func play_drums():
 	ready = false
 
-	$Drums.play("beat")
+	#$Guitar.play("beat")
 
 	var sound_wave = soundWavePath.instance()
 	add_child(sound_wave)
-	sound_wave.position = $Drums/SoundWaveOrigin.position
+	sound_wave.position = $Guitar/SoundWaveOrigin.position
 
 	yield(get_tree().create_timer(0.1), "timeout")
 
 	sound_wave.free()
 
-	$Drums.frame = 0
+	#$Guitar.frame = 0
 
 	ready = true
-
-
-
-
