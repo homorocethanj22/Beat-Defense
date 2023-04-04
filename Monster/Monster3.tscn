@@ -26,7 +26,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="Monster1" type="PathFollow2D"]
+[node name="Monster3" type="PathFollow2D"]
 rotate = false
 script = ExtResource( 8 )
 
