@@ -28,7 +28,7 @@ func _ready():
 	child_timer.set_wait_time(0.45)
 	
 
-	map_node = get_node("Map1")
+	map_node = get_node("Map2")
 	drums = map_node.get_child(3)
 	
 
@@ -43,7 +43,9 @@ func start_next_wave():
 func spawn_enemies(wave_data):
 	for i in wave_data:
 		var new_enemy = enemy.instance()
-		map_node.get_node("Path").add_child(new_enemy, true)
+		var new_enemy2 = enemy.instance()
+		map_node.get_node("TopLeftPath").add_child(new_enemy, true)
+		map_node.get_node("BottomLeftPath").add_child(new_enemy2, true)
 		yield(get_tree().create_timer(i[1]), "timeout")
 
 
