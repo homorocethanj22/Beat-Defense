@@ -7,8 +7,9 @@
 [ext_resource path="res://Assets/UI/Art/Monster Walk/Walk Frame 4.png" type="Texture" id=5]
 [ext_resource path="res://Assets/UI/Art/Monster Walk/Damage Frame 1.png" type="Texture" id=6]
 [ext_resource path="res://Assets/UI/Art/Monster Walk/Damage Frame 4.png" type="Texture" id=7]
-[ext_resource path="res://Monsters/Monster1.gd" type="Script" id=8]
+[ext_resource path="res://Monster/Monster3.gd" type="Script" id=8]
 [ext_resource path="res://Assets/UI/Art/Monster Walk/Damage Frame 3.png" type="Texture" id=9]
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 21, 28.5 )

@@ -6,11 +6,11 @@ const soundWavePath = preload("res://Instruments/SoundWave.tscn")
 
 
 func _unhandled_key_input(event):
-	if event.is_action_pressed("play_drum") and ready == true:
-		play_drums()
+	if event.is_action_pressed("play_guitar") and ready == true:
+		play_guitar()
 
 
-func play_drums():
+func play_guitar():
 	ready = false
 
 	#$Guitar.play("beat")
