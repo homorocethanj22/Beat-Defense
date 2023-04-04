@@ -49,7 +49,7 @@ func start_next_wave():
 
 func spawn_enemies(wave_data):
 	for i in wave_data:
-		if String(i[0]) == "Monster":
+		if String(i[0]) == "Monster1":
 			var new_enemy = enemy1.instance()
 			map_node.get_node("TopLeftPath").add_child(new_enemy, true)
 			yield(get_tree().create_timer(i[1]), "timeout")
