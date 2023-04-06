@@ -19,6 +19,10 @@ config/icon="res://icon.png"
 
 mouse_cursor/custom_image="res://Assets/UI/cursor_pointer3D_shadow.png"
 
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/beatkeeper/plugin.cfg" )
+
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true

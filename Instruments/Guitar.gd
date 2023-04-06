@@ -13,7 +13,7 @@ func _unhandled_key_input(event):
 func play_guitar():
 	ready = false
 
-	#$Guitar.play("beat")
+	$Guitar.play("beat")
 
 	var sound_wave = soundWavePath.instance()
 	add_child(sound_wave)
@@ -23,6 +23,6 @@ func play_guitar():
 
 	sound_wave.free()
 
-	#$Guitar.frame = 0
+	$Guitar.frame = 0
 
 	ready = true

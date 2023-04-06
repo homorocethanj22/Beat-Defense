@@ -2,6 +2,7 @@ extends Node
 
 var map_node
 var drums
+var last_msec = 0
 
 ## Enemies/Monsters
 var enemy1 = preload("res://Monster/Monster.tscn")
@@ -25,19 +26,20 @@ onready var child_timer = get_node("SongTimer/ChildTimer")
 onready var song_start = get_node("SongStart")
 
 func _ready():
-	timer.set_wait_time(0.45) # 60/132 bpm = 0.45454545
+	#timer.set_wait_time(0.45) # 60/132 bpm = 0.45454545
 	#timer.start()
 	
-	song_start.set_wait_time(11.6)
-	song_start.start()
+	#song_start.set_wait_time(11.6)
+	#song_start.start()
 	
-	child_timer.set_wait_time(0.45)
+	#child_timer.set_wait_time(0.45)
 	
 
 	map_node = get_node("Map2")
 	drums = map_node.get_child(3)
+	$BeatKeeper.play();
 	
-	start_next_wave()
+	#start_next_wave()
 
 # Spawning Functions
 func start_next_wave():
@@ -67,6 +69,8 @@ func spawn_enemies(wave_data):
 			yield(get_tree().create_timer(i[1]), "timeout")
 
 
+
+
 func _on_SongTimer_timeout():
 	drums.ready = true
 	child_timer.start()
@@ -82,3 +86,10 @@ func _on_ChildTimer_timeout():
 func _on_SongStart_timeout():
 	$AudioStreamPlayer2D.play()
 	song_start.stop()
+
+
+func _on_BeatKeeper_whole_beat(number, exact_msec):
+	var new_enemy = enemy1.instance()
+	map_node.get_node("TopLeftPath").add_child(new_enemy, true)
+	print(exact_msec - last_msec)
+	last_msec = exact_msec
