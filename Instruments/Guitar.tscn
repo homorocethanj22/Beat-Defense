@@ -23,7 +23,8 @@ script = ExtResource( 2 )
 
 [node name="Guitar" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-animation = "still"
+animation = "beat"
+frame = 3
 playing = true
 
 [node name="SoundWaveOrigin" type="Position2D" parent="Guitar"]
