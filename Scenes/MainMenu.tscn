@@ -44,7 +44,7 @@ size_flags_horizontal = 8
 custom_constants/separation = 35
 alignment = 2
 
-[node name="NewGame" type="TextureButton" parent="MarginContainer/VBoxContainer"]
+[node name="LevelSelect" type="TextureButton" parent="MarginContainer/VBoxContainer"]
 margin_top = 20.0
 margin_right = 350.0
 margin_bottom = 65.0
@@ -54,14 +54,14 @@ texture_normal = ExtResource( 1 )
 texture_pressed = ExtResource( 4 )
 expand = true
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/NewGame"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/LevelSelect"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -1.0
 margin_right = -1.0
 custom_colors/font_color_shadow = Color( 0, 0, 0, 0.705882 )
 custom_fonts/font = SubResource( 1 )
-text = "New Game"
+text = "Level Select"
 align = 1
 valign = 1
 __meta__ = {
@@ -83,7 +83,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 custom_colors/font_color_shadow = Color( 0, 0, 0, 0.705882 )
 custom_fonts/font = SubResource( 1 )
-text = "About"
+text = "Settings"
 align = 1
 valign = 1
 
@@ -102,7 +102,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 custom_colors/font_color_shadow = Color( 0, 0, 0, 0.705882 )
 custom_fonts/font = SubResource( 1 )
-text = "Settings"
+text = "About
+"
 align = 1
 valign = 1
 

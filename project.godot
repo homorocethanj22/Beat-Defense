@@ -21,7 +21,7 @@ mouse_cursor/custom_image="res://Assets/UI/cursor_pointer3D_shadow.png"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/beatkeeper/plugin.cfg" )
+enabled=PoolStringArray(  )
 
 [gui]
 
