@@ -37,5 +37,4 @@ shape = SubResource( 1 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="KinematicBody2D"]
 frames = SubResource( 3 )
 animation = "walk"
-frame = 1
 playing = true

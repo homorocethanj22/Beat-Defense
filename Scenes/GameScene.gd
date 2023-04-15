@@ -91,5 +91,4 @@ func _on_SongStart_timeout():
 func _on_BeatKeeper_whole_beat(number, exact_msec):
 	var new_enemy = enemy1.instance()
 	map_node.get_node("TopLeftPath").add_child(new_enemy, true)
-	print(exact_msec - last_msec)
-	last_msec = exact_msec
+
