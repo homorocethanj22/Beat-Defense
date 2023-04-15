@@ -31,8 +31,8 @@ func _on_SoundWave_body_entered(body):
 	
 
 func key_stroke():
-	print("hello")
 	if (currentEnemy != null):
+		print("hello")
 		if (perfect):
 			currentEnemy.get_parent().hit(damage * 3)
 			print("perfect")
@@ -51,6 +51,7 @@ func _on_OkayArea_body_entered(body):
 	if ("Monster" in body.get_parent().name):
 		okay = true
 		currentEnemy = body
+		print(currentEnemy.get_parent().name)
 
 
 func _on_OkayArea_body_exited(body):

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Short_Record_Scratch.mp3-ca6e765d4aa31b92e74901932a0c65b6.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Short_Record_Scratch.mp3"
+dest_files=[ "res://.import/Short_Record_Scratch.mp3-ca6e765d4aa31b92e74901932a0c65b6.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
