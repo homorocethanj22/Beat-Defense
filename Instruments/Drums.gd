@@ -27,10 +27,7 @@ func play_drums():
 	#add_child(sound_wave)
 	#sound_wave.position = $Drums/SoundWaveOrigin.position
 	#sound_wave.key_stroke()
-
-	yield(get_tree().create_timer(0.1), "timeout")
-
-	#sound_wave.free()
+	
 	if (currentEnemy != null):
 		if (perfect):
 			currentEnemy.hit(3)
@@ -42,7 +39,12 @@ func play_drums():
 			currentEnemy.hit(1)
 			print("okay")
 	else:
+		print("missed...")
 		$RecordScratch.play()
+
+	yield(get_tree().create_timer(0.02), "timeout")
+
+	#sound_wave.free()
 	
 
 	$Drums.frame = 0

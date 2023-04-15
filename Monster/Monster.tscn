@@ -11,7 +11,7 @@
 [ext_resource path="res://Assets/UI/Art/Monster Walk/Damage Frame 3.png" type="Texture" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 11.5, 24.5 )
+extents = Vector2( 17, 29 )
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
@@ -33,11 +33,10 @@ script = ExtResource( 8 )
 [node name="KinematicBody2D" type="KinematicBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
-position = Vector2( 1.5, -5.5 )
+position = Vector2( 2, -6 )
 shape = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="KinematicBody2D"]
-position = Vector2( -1.90735e-06, 1.90735e-06 )
-scale = Vector2( 0.734375, 0.734375 )
+scale = Vector2( 0.882813, 0.882813 )
 frames = SubResource( 3 )
 animation = "walk"

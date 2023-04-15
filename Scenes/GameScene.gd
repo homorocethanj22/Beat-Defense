@@ -90,5 +90,5 @@ func _on_SongStart_timeout():
 
 func _on_BeatKeeper_whole_beat(number, exact_msec):
 	var new_enemy = enemy1.instance()
-	map_node.get_node("TopLeftPath").add_child(new_enemy, true)
+	map_node.get_node("BottomLeftPath").add_child(new_enemy, true)
 
