@@ -19,6 +19,7 @@ func _ready():
 
 
 func _on_House_body_entered(body):
+	health = health - body.get_parent().get_health()
 	body.get_parent().free()
-	health = health - 1
 	h_bar.value = health
+	print(health)

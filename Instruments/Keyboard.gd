@@ -18,6 +18,7 @@ func play_keyboard():
 	var sound_wave = soundWavePath.instance()
 	add_child(sound_wave)
 	sound_wave.position = $Keyboard/SoundWaveOrigin.position
+	sound_wave.key_stroke()
 
 	yield(get_tree().create_timer(0.1), "timeout")
 

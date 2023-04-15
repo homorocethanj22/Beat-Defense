@@ -2,7 +2,7 @@ extends PathFollow2D
 
 
 var speed = 300
-var health = 100
+var health = 3
 
 func _physics_process(delta):
 	offset += speed * delta
@@ -18,3 +18,7 @@ func hit(damage):
 
 func free():
 	queue_free()
+
+
+func get_health():
+	return health

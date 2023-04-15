@@ -117,7 +117,7 @@ tile_data = PoolIntArray( -131072, 0, 0, -131057, 0, 0, -65536, 0, 1, -65521, 0,
 curve = SubResource( 3 )
 
 [node name="Drums" parent="." instance=ExtResource( 2 )]
-position = Vector2( 356, 94 )
+position = Vector2( 355, 152 )
 
 [node name="BottomLeftPath" type="Path2D" parent="."]
 curve = SubResource( 4 )
