@@ -12,10 +12,10 @@ func on_level_one_pressed():
 	get_tree().change_scene("res://Scenes/GameScene.tscn")
 	
 func on_level_two_pressed():
-	get_tree().change_scene("res://Scenes/GameScene.tscn")
+	get_tree().change_scene("res://Scenes/GameScene2.tscn")
 	
 func on_level_three_pressed():
-	get_tree().change_scene("res://Scenes/GameScene.tscn")
+	get_tree().change_scene("res://Scenes/GameScene3.tscn")
 	
 func on_back_pressed():
 	get_tree().change_scene("res://Scenes/SceneHandler.tscn")
