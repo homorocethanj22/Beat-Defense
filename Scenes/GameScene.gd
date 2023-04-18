@@ -35,7 +35,7 @@ func _ready():
 	#child_timer.set_wait_time(0.45)
 	
 
-	map_node = get_node("Map2")
+	map_node = get_node("Map1")
 	drums = map_node.get_child(3)
 	$BeatKeeper.play();
 	
@@ -90,5 +90,5 @@ func _on_SongStart_timeout():
 
 func _on_BeatKeeper_whole_beat(number, exact_msec):
 	var new_enemy = enemy1.instance()
-	map_node.get_node("BottomLeftPath").add_child(new_enemy, true)
+	map_node.get_node("Path").add_child(new_enemy, true)
 

@@ -8,7 +8,7 @@
 [ext_resource path="res://Assets/UI/Art/BackGround.png" type="Texture" id=6]
 
 [sub_resource type="DynamicFont" id=1]
-size = 40
+size = 25
 outline_size = 1
 outline_color = Color( 0, 0, 0, 0.235294 )
 font_data = ExtResource( 1 )
@@ -24,10 +24,10 @@ margin_bottom = 1080.0
 texture = ExtResource( 6 )
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-margin_left = -23.0
-margin_top = 117.0
-margin_right = 1047.0
-margin_bottom = 467.0
+margin_left = 11.0
+margin_top = 168.0
+margin_right = 1016.0
+margin_bottom = 468.0
 rect_min_size = Vector2( 1000, 0 )
 custom_constants/margin_right = 50
 custom_constants/margin_top = 50
@@ -37,17 +37,17 @@ custom_constants/margin_bottom = 50
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 margin_left = 50.0
 margin_top = 50.0
-margin_right = 1020.0
-margin_bottom = 300.0
-rect_min_size = Vector2( 150, 250 )
+margin_right = 955.0
+margin_bottom = 250.0
+rect_min_size = Vector2( 150, 200 )
 size_flags_horizontal = 8
 custom_constants/separation = 35
 alignment = 2
 
 [node name="Level1" type="TextureButton" parent="MarginContainer/HBoxContainer"]
-margin_right = 300.0
-margin_bottom = 250.0
-rect_min_size = Vector2( 300, 45 )
+margin_right = 200.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 200, 200 )
 size_flags_horizontal = 4
 texture_normal = ExtResource( 2 )
 texture_pressed = ExtResource( 3 )
@@ -68,10 +68,10 @@ __meta__ = {
 }
 
 [node name="Level2" type="TextureButton" parent="MarginContainer/HBoxContainer"]
-margin_left = 335.0
-margin_right = 635.0
-margin_bottom = 250.0
-rect_min_size = Vector2( 300, 45 )
+margin_left = 235.0
+margin_right = 435.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 200, 200 )
 size_flags_horizontal = 4
 texture_normal = ExtResource( 2 )
 texture_pressed = ExtResource( 3 )
@@ -92,23 +92,47 @@ __meta__ = {
 }
 
 [node name="Level3" type="TextureButton" parent="MarginContainer/HBoxContainer"]
-margin_left = 670.0
-margin_right = 970.0
-margin_bottom = 250.0
-rect_min_size = Vector2( 300, 45 )
+margin_left = 470.0
+margin_right = 670.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 200, 200 )
 size_flags_horizontal = 4
 texture_normal = ExtResource( 2 )
 texture_pressed = ExtResource( 3 )
 expand = true
 
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer/Level3"]
-anchor_right = 1.14
+anchor_right = 0.59
 anchor_bottom = 1.0
 margin_left = -1.0
-margin_right = -43.0
+margin_right = 81.0
 custom_colors/font_color_shadow = Color( 0, 0, 0, 0.705882 )
 custom_fonts/font = SubResource( 1 )
 text = " Level Three"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Level4" type="TextureButton" parent="MarginContainer/HBoxContainer"]
+margin_left = 705.0
+margin_right = 905.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 200, 200 )
+size_flags_horizontal = 4
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 3 )
+expand = true
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/Level4"]
+anchor_right = 1.235
+anchor_bottom = 1.0
+margin_left = -1.0
+margin_right = -48.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.705882 )
+custom_fonts/font = SubResource( 1 )
+text = " Level Four"
 align = 1
 valign = 1
 __meta__ = {

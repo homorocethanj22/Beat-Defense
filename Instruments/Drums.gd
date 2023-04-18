@@ -12,6 +12,7 @@ var currentEnemy = null
 
 const soundWavePath = preload("res://Instruments/SoundWave.tscn")
 
+var textbox_scene = preload("res://Scenes/Textbox.tscn")
 
 func _unhandled_key_input(event):
 	if event.is_action_pressed("play_drum") and ready == true:
@@ -20,6 +21,10 @@ func _unhandled_key_input(event):
 
 func play_drums():
 	ready = false
+	
+	var textbox = textbox_scene.instance()
+	textbox.position = get_parent().position + Vector2(-70, -60)
+	add_child(textbox)
 
 	$Drums.play("beat")
 
@@ -31,15 +36,31 @@ func play_drums():
 	if (currentEnemy != null):
 		if (perfect):
 			currentEnemy.hit(3)
+			textbox.set_text("PERFECT!")
+			textbox.visible = true
+			yield(get_tree().create_timer(0.2), "timeout")
+			textbox.visible = false
 			print("perfect")
 		elif (good):
 			currentEnemy.hit(2)
+			textbox.set_text("GOOD!")
+			textbox.visible = true
+			yield(get_tree().create_timer(0.2), "timeout")
+			textbox.visible = false
 			print("good")
 		elif(okay):
 			currentEnemy.hit(1)
+			textbox.set_text("OKAY!")
+			textbox.visible = true
+			yield(get_tree().create_timer(0.2), "timeout")
+			textbox.visible = false
 			print("okay")
 	else:
 		print("missed...")
+		textbox.set_text("MISSED!")
+		textbox.visible = true
+		yield(get_tree().create_timer(0.2), "timeout")
+		textbox.visible = false
 		$RecordScratch.play()
 
 	yield(get_tree().create_timer(0.02), "timeout")

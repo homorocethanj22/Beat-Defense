@@ -1,0 +1,83 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Scenes/UI3.gd" type="Script" id=1]
+[ext_resource path="res://Assets/UI/Input/fastForward.png" type="Texture" id=3]
+[ext_resource path="res://Assets/UI/Input/tile_0086.png" type="Texture" id=4]
+[ext_resource path="res://Scenes/House.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/UI/Input/right.png" type="Texture" id=6]
+[ext_resource path="res://Assets/UI/Input/pause.png" type="Texture" id=7]
+[ext_resource path="res://addons/beatkeeper/beatkeeper_node.gd" type="Script" id=8]
+[ext_resource path="res://Scenes/GameScene3.gd" type="Script" id=10]
+[ext_resource path="res://Maps/Map3.tscn" type="PackedScene" id=11]
+
+[node name="GameScene3" type="Node"]
+script = ExtResource( 10 )
+
+[node name="UI3" type="CanvasLayer" parent="."]
+script = ExtResource( 1 )
+
+[node name="HUD" type="Control" parent="UI3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="BuildBar" type="VBoxContainer" parent="UI3/HUD"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = -84.0
+margin_right = 84.0
+margin_bottom = -20.0
+rect_min_size = Vector2( 64, 64 )
+
+[node name="TextureRect" type="TextureRect" parent="UI3/HUD/BuildBar"]
+margin_right = 64.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 64, 64 )
+texture = ExtResource( 4 )
+expand = true
+
+[node name="GameControls" type="HBoxContainer" parent="UI3/HUD"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -164.0
+margin_top = -90.0
+margin_right = -20.0
+margin_bottom = -20.0
+
+[node name="PausePlay" type="TextureButton" parent="UI3/HUD/GameControls"]
+pause_mode = 2
+margin_right = 70.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 70, 70 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+toggle_mode = true
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 7 )
+expand = true
+
+[node name="SpeedUp" type="TextureButton" parent="UI3/HUD/GameControls"]
+margin_left = 74.0
+margin_right = 144.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 70, 70 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource( 3 )
+expand = true
+
+[node name="BeatKeeper" type="AudioStreamPlayer" parent="."]
+script = ExtResource( 8 )
+Tempo = 88.0
+Offset_in_MS = 500
+
+[node name="Map3" parent="." instance=ExtResource( 11 )]
+
+[node name="House" parent="." instance=ExtResource( 5 )]
+position = Vector2( 508, 255 )
+
+[connection signal="pressed" from="UI3/HUD/GameControls/PausePlay" to="UI3" method="_on_PausePlay_pressed"]
+[connection signal="pressed" from="UI3/HUD/GameControls/SpeedUp" to="UI3" method="_on_SpeedUp_pressed"]
+[connection signal="whole_beat" from="BeatKeeper" to="." method="_on_BeatKeeper_whole_beat"]
