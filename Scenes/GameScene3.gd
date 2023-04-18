@@ -17,10 +17,11 @@ func _ready():
 
 
 func _on_BeatKeeper_whole_beat(number, exact_msec):
-	var e = enemy1.instance()
+	var new_enemy = enemy1.instance()
+	var e = enemy2.instance()
 	if number % 2 != 0 && number > 11:
 		if number != 43:
-			map_node.get_node("TopLeftPath").add_child(e, true) # drums
+			map_node.get_node("TopLeftPath").add_child(new_enemy, true) # drums
 	print(number) # 170 is about 2 minutes // Stop here
 
 
