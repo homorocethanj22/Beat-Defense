@@ -11,7 +11,7 @@ var enemy3 = preload("res://Monster/Monster3.tscn")
 var enemy4 = preload("res://Monster/Monster4.tscn")
 
 func _ready():
-	map_node = get_node("Map4")
+	map_node = get_node("Map3")
 	drums = map_node.get_child(3)
 	$BeatKeeper.play();
 
