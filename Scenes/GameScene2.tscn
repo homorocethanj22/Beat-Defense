@@ -15,6 +15,7 @@
 script = ExtResource( 10 )
 
 [node name="UI2" type="CanvasLayer" parent="."]
+visible = false
 script = ExtResource( 7 )
 
 [node name="HUD" type="Control" parent="UI2"]
@@ -38,6 +39,7 @@ texture = ExtResource( 3 )
 expand = true
 
 [node name="GameControls" type="HBoxContainer" parent="UI2/HUD"]
+visible = false
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0

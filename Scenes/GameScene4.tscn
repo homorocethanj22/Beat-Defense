@@ -1,6 +1,7 @@
 [gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scenes/UI3.gd" type="Script" id=1]
+[ext_resource path="res://Maps/Map4.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/UI/Input/fastForward.png" type="Texture" id=3]
 [ext_resource path="res://Assets/UI/Input/tile_0086.png" type="Texture" id=4]
 [ext_resource path="res://Scenes/House.tscn" type="PackedScene" id=5]
@@ -8,12 +9,12 @@
 [ext_resource path="res://Assets/UI/Input/pause.png" type="Texture" id=7]
 [ext_resource path="res://addons/beatkeeper/beatkeeper_node.gd" type="Script" id=8]
 [ext_resource path="res://Scenes/GameScene3.gd" type="Script" id=10]
-[ext_resource path="res://Maps/Map3.tscn" type="PackedScene" id=11]
 
-[node name="GameScene3" type="Node"]
+[node name="GameScene4" type="Node"]
 script = ExtResource( 10 )
 
 [node name="UI3" type="CanvasLayer" parent="."]
+visible = false
 script = ExtResource( 1 )
 
 [node name="HUD" type="Control" parent="UI3"]
@@ -37,6 +38,7 @@ texture = ExtResource( 4 )
 expand = true
 
 [node name="GameControls" type="HBoxContainer" parent="UI3/HUD"]
+visible = false
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -73,10 +75,10 @@ script = ExtResource( 8 )
 Tempo = 88.0
 Offset_in_MS = 500
 
-[node name="Map3" parent="." instance=ExtResource( 11 )]
-
 [node name="House" parent="." instance=ExtResource( 5 )]
 position = Vector2( 508, 255 )
+
+[node name="Map4" parent="." instance=ExtResource( 2 )]
 
 [connection signal="pressed" from="UI3/HUD/GameControls/PausePlay" to="UI3" method="_on_PausePlay_pressed"]
 [connection signal="pressed" from="UI3/HUD/GameControls/SpeedUp" to="UI3" method="_on_SpeedUp_pressed"]
