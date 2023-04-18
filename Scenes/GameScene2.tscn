@@ -8,7 +8,7 @@
 [ext_resource path="res://Assets/UI/Input/pause.png" type="Texture" id=6]
 [ext_resource path="res://Scenes/UI2.gd" type="Script" id=7]
 [ext_resource path="res://addons/beatkeeper/beatkeeper_node.gd" type="Script" id=8]
-[ext_resource path="res://Sounds/Metronome_120_BPM_-_QuickSounds.com.wav" type="AudioStream" id=9]
+[ext_resource path="res://Sounds/Daft_Punk_Get_Lucky_feat_Pharrell_Williams_N.mp3" type="AudioStream" id=9]
 [ext_resource path="res://Scenes/GameScene2.gd" type="Script" id=10]
 
 [node name="GameScene2" type="Node"]
@@ -77,9 +77,13 @@ position = Vector2( 495, 255 )
 [node name="BeatKeeper" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
 script = ExtResource( 8 )
-Tempo = 120.0
+Tempo = 116.0
 Offset_in_MS = 500
+half_beats = true
+quarter_beats = true
 
 [connection signal="pressed" from="UI2/HUD/GameControls/PausePlay" to="UI2" method="_on_PausePlay_pressed"]
 [connection signal="pressed" from="UI2/HUD/GameControls/SpeedUp" to="UI2" method="_on_SpeedUp_pressed"]
+[connection signal="half_beat" from="BeatKeeper" to="." method="_on_BeatKeeper_half_beat"]
+[connection signal="quarter_beat" from="BeatKeeper" to="." method="_on_BeatKeeper_quarter_beat"]
 [connection signal="whole_beat" from="BeatKeeper" to="." method="_on_BeatKeeper_whole_beat"]
