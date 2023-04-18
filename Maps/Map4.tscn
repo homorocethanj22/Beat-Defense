@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Assets/Map/terrainTiles_default.png" type="Texture" id=1]
 [ext_resource path="res://Instruments/Keyboard.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Instruments/Drums.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Instruments/Guitar.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Instruments/Cymbals.tscn" type="PackedScene" id=5]
 
 [sub_resource type="TileSet" id=1]
 0/name = "terrainTiles_default.png 0"
@@ -115,7 +116,7 @@ tile_data = PoolIntArray( 131070, 0, 0, 131071, 0, 2, 65536, 0, 2, 65537, 0, 2, 
 curve = SubResource( 3 )
 
 [node name="Drums" parent="." instance=ExtResource( 3 )]
-position = Vector2( 356, 94 )
+position = Vector2( 343, 47 )
 
 [node name="BottomLeftPath" type="Path2D" parent="."]
 curve = SubResource( 4 )
@@ -127,7 +128,10 @@ curve = SubResource( 5 )
 curve = SubResource( 6 )
 
 [node name="Keyboard" parent="." instance=ExtResource( 2 )]
-position = Vector2( 673, 367 )
+position = Vector2( 686, 430 )
 
 [node name="Guitar" parent="." instance=ExtResource( 4 )]
-position = Vector2( 349, 351 )
+position = Vector2( 352, 427 )
+
+[node name="Cymbals" parent="." instance=ExtResource( 5 )]
+position = Vector2( 674, 44 )
