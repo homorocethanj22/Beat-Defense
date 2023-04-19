@@ -13,7 +13,6 @@ func hit(damage):
 	health = health - damage
 	$KinematicBody2D/AnimatedSprite.play("Damage Walk")
 	if (health <= 0):
-		print(offset)
 		queue_free()
 
 

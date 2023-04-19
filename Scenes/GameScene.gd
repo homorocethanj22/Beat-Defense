@@ -18,7 +18,6 @@ func _ready():
 
 
 func _on_TheChain_whole_beat(number, exact_msec):
-	print(number)
 	if (number % 2 == 0 && number < 63):
 		var new_enemy = enemy1.instance()
 		map_node.get_node("Path").add_child(new_enemy, true)
@@ -80,10 +79,12 @@ func _on_TheChain_third_beat(number, exact_msec):
 	elif (number > 1238 && number < 1260):
 		var new_enemy = enemy1.instance()
 		map_node.get_node("Path").add_child(new_enemy, true)
+	elif (exact_msec > 195000):
+		$TheChain.stop()
 
 
 func _on_TheChain_half_beat(number, exact_msec):
-	if (number == 257 || number == 258):
+	if (number == 256 || number == 257):
 		var new_enemy = enemy1.instance()
 		map_node.get_node("Path").add_child(new_enemy, true)
 	elif (number == 642 || number == 643 || number == 644):
