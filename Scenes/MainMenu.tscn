@@ -30,7 +30,6 @@ margin_left = -8.0
 position = Vector2( 525.5, 309 )
 scale = Vector2( 1.043, 1.03 )
 frames = SubResource( 2 )
-frame = 1
 playing = true
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
