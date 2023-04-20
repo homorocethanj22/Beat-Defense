@@ -19,9 +19,10 @@ margin_bottom = 40.0
 script = ExtResource( 4 )
 
 [node name="Background" type="TextureRect" parent="."]
-margin_right = 1920.0
-margin_bottom = 1080.0
+margin_right = 1024.0
+margin_bottom = 600.0
 texture = ExtResource( 6 )
+expand = true
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 margin_left = 11.0

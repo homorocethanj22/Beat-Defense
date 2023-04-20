@@ -3,6 +3,8 @@ extends Node
 var map_node
 var drums
 var last_msec = 0
+var pause_bool = false
+var pos
 
 ## Enemies/Monsters
 var enemy1 = preload("res://Monster/Monster.tscn")
@@ -14,6 +16,22 @@ func _ready():
 	map_node = get_node("Map3")
 	drums = map_node.get_child(3)
 	$BeatKeeper.play();
+
+func _input(event):
+	if event is InputEventKey and event.scancode == KEY_ESCAPE and event.pressed:
+		pause()
+		
+func pause():
+	if pause_bool == false:
+		pos = $BeatKeeper.get_playback_position()
+		$BeatKeeper.stop()
+		pause_bool = true
+		get_tree().paused = true
+	elif pause_bool == true:
+		$BeatKeeper.play(pos)
+		pause_bool = false
+		get_tree().paused = false;
+
 
 
 func _on_BeatKeeper_whole_beat(number, exact_msec):
