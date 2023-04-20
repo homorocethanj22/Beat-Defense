@@ -7,6 +7,7 @@ var perfect = false
 var good = false
 var okay = false
 
+var enemyList = []
 var currentEnemy = null
 
 const soundWavePath = preload("res://Instruments/SoundWave.tscn")
@@ -32,38 +33,39 @@ func play_guitar():
 	#sound_wave.position = $Guitar/SoundWaveOrigin.position
 	#sound_wave.key_stroke()
 	
-	if (currentEnemy != null):
+	if (len(enemyList) != 0):
 		if (perfect):
+			currentEnemy = enemyList.pop_at(0)
 			currentEnemy.hit(3)
 			textbox.set_text("PERFECT!")
 			textbox.visible = true
-			yield(get_tree().create_timer(0.2), "timeout")
+			yield(get_tree().create_timer(0.02), "timeout")
 			textbox.visible = false
 			print("perfect")
 		elif (good):
+			currentEnemy = enemyList.pop_at(0)
 			currentEnemy.hit(2)
 			textbox.set_text("GOOD!")
 			textbox.visible = true
-			yield(get_tree().create_timer(0.2), "timeout")
+			yield(get_tree().create_timer(0.02), "timeout")
 			textbox.visible = false
 			print("good")
 		elif(okay):
+			currentEnemy = enemyList.pop_at(0)
 			currentEnemy.hit(1)
 			textbox.set_text("OKAY!")
 			textbox.visible = true
-			yield(get_tree().create_timer(0.2), "timeout")
+			yield(get_tree().create_timer(0.02), "timeout")
 			textbox.visible = false
 			print("okay")
 	else:
 		print("missed...")
 		textbox.set_text("MISSED!")
 		textbox.visible = true
-		yield(get_tree().create_timer(0.2), "timeout")
+		yield(get_tree().create_timer(0.02), "timeout")
 		textbox.visible = false
-		$RecordScratch.play()
+		#$RecordScratch.play()
 		
-
-	yield(get_tree().create_timer(0.02), "timeout")
 
 	#sound_wave.free()
 
@@ -78,13 +80,13 @@ func play_guitar():
 func _on_OkayArea_body_entered(body):
 	if ("Monster" in body.get_parent().name):
 		okay = true
-		currentEnemy = body.get_parent()
+		enemyList.append(body.get_parent())
 
 
 func _on_OkayArea_body_exited(body):
 	if ("Monster" in body.get_parent().name):
 		okay = false
-		currentEnemy = null
+		enemyList.pop_at(0)
 
 
 func _on_GoodArea_body_entered(body):

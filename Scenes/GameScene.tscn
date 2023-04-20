@@ -1,16 +1,15 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Maps/Map1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/UI/Input/tile_0086.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/GameScene.gd" type="Script" id=3]
-[ext_resource path="res://Sounds/Metallica - Enter Sandman.mp3" type="AudioStream" id=4]
+[ext_resource path="res://Sounds/Fleetwood Mac - The Chain.mp3" type="AudioStream" id=4]
 [ext_resource path="res://Scenes/House.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/UI/Input/fastForward.png" type="Texture" id=6]
 [ext_resource path="res://Assets/UI/Input/right.png" type="Texture" id=7]
 [ext_resource path="res://Assets/UI/Input/pause.png" type="Texture" id=8]
 [ext_resource path="res://Scenes/UI.gd" type="Script" id=9]
 [ext_resource path="res://addons/beatkeeper/beatkeeper_node.gd" type="Script" id=11]
-[ext_resource path="res://Sounds/Metronome_120_BPM_-_QuickSounds.com.wav" type="AudioStream" id=12]
 
 [node name="GameScene" type="Node"]
 script = ExtResource( 3 )
@@ -72,30 +71,21 @@ size_flags_vertical = 4
 texture_normal = ExtResource( 6 )
 expand = true
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-visible = false
-stream = ExtResource( 4 )
-
-[node name="SongTimer" type="Timer" parent="."]
-
-[node name="ChildTimer" type="Timer" parent="SongTimer"]
-
-[node name="SongStart" type="Timer" parent="."]
-
 [node name="Map1" parent="." instance=ExtResource( 1 )]
 
 [node name="House" parent="." instance=ExtResource( 5 )]
 position = Vector2( 605, 341 )
 
-[node name="BeatKeeper" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 12 )
+[node name="TheChain" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
 script = ExtResource( 11 )
-Tempo = 120.0
-Offset_in_MS = 500
+Tempo = 152.0
+PlayDelay_MS = 6700
+half_beats = true
+third_beats = true
 
 [connection signal="pressed" from="UI/HUD/GameControls/PausePlay" to="UI" method="_on_PausePlay_pressed"]
 [connection signal="pressed" from="UI/HUD/GameControls/SpeedUp" to="UI" method="_on_SpeedUp_pressed"]
-[connection signal="timeout" from="SongTimer" to="." method="_on_SongTimer_timeout"]
-[connection signal="timeout" from="SongTimer/ChildTimer" to="." method="_on_ChildTimer_timeout"]
-[connection signal="timeout" from="SongStart" to="." method="_on_SongStart_timeout"]
-[connection signal="whole_beat" from="BeatKeeper" to="." method="_on_BeatKeeper_whole_beat"]
+[connection signal="half_beat" from="TheChain" to="." method="_on_TheChain_half_beat"]
+[connection signal="third_beat" from="TheChain" to="." method="_on_TheChain_third_beat"]
+[connection signal="whole_beat" from="TheChain" to="." method="_on_TheChain_whole_beat"]

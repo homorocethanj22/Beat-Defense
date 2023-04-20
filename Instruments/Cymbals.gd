@@ -37,32 +37,32 @@ func play_cymbals():
 			currentEnemy.hit(3)
 			textbox.set_text("PERFECT!")
 			textbox.visible = true
-			yield(get_tree().create_timer(0.2), "timeout")
+			yield(get_tree().create_timer(0.02), "timeout")
 			textbox.visible = false
 			print("perfect")
 		elif (good):
 			currentEnemy.hit(2)
 			textbox.set_text("GOOD!")
 			textbox.visible = true
-			yield(get_tree().create_timer(0.2), "timeout")
+			yield(get_tree().create_timer(0.02), "timeout")
 			textbox.visible = false
 			print("good")
 		elif(okay):
 			currentEnemy.hit(1)
 			textbox.set_text("OKAY!")
 			textbox.visible = true
-			yield(get_tree().create_timer(0.2), "timeout")
+			yield(get_tree().create_timer(0.02), "timeout")
 			textbox.visible = false
 			print("okay")
 	else:
 		print("missed...")
 		textbox.set_text("MISSED!")
 		textbox.visible = true
-		yield(get_tree().create_timer(0.2), "timeout")
+		yield(get_tree().create_timer(0.02), "timeout")
 		textbox.visible = false
-		$RecordScratch.play()
+		#$RecordScratch.play()
 
-	yield(get_tree().create_timer(0.02), "timeout")
+
 
 	#sound_wave.free()
 

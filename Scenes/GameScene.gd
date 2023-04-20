@@ -10,85 +10,83 @@ var enemy2 = preload("res://Monster/Monster2.tscn")
 var enemy3 = preload("res://Monster/Monster3.tscn")
 var enemy4 = preload("res://Monster/Monster4.tscn")
 
-## Spawning Data: ["Monster#", seconds]
-var wave_data = [["Monster", 1], ["Monster2", 1], ["Monster3", 1], ["Monster4", 1]]
-	#["Monster1", 1], ["Monster1", 1], ["Monster2", 0.8], ["Monster2", 1], ["Monster2", 1], 
-	#["Monster2", 1], ["Monster2", 1], ["Monster2", 1], ["Monster2", 1], ["Monster2", 0.5], 
-	#["Monster3", 0.5], ["Monster3", 0.5], ["Monster3", 0.5], ["Monster3", 0.5], ["Monster3", 0.5], 
-	#["Monster3", 0.5], ["Monster3", 0.5], ["Monster4", 0.5], ["Monster4", 0.5], ["Monster4", 0.5], 
-	#["Monster4", 0.4], ["Monster4", 0.4], ["Monster4", 0.5]]
-
-var current_wave = 0
-var enemies_in_wave = 0
-
-onready var timer = get_node("SongTimer")
-onready var child_timer = get_node("SongTimer/ChildTimer")
-onready var song_start = get_node("SongStart")
-
 func _ready():
-	#timer.set_wait_time(0.45) # 60/132 bpm = 0.45454545
-	#timer.start()
-	
-	#song_start.set_wait_time(11.6)
-	#song_start.start()
-	
-	#child_timer.set_wait_time(0.45)
-	
-
 	map_node = get_node("Map1")
 	drums = map_node.get_child(3)
-	$BeatKeeper.play();
-	
-	#start_next_wave()
-
-# Spawning Functions
-func start_next_wave():
-	yield(get_tree().create_timer(0.2),"timeout") ## padding between waves
-	spawn_enemies(wave_data)
-	current_wave += 1
-	enemies_in_wave = wave_data.size()
-	return wave_data
-
-func spawn_enemies(wave_data):
-	for i in wave_data:
-		if String(i[0]) == "Monster1":
-			var new_enemy = enemy1.instance()
-			map_node.get_node("TopLeftPath").add_child(new_enemy, true)
-			yield(get_tree().create_timer(i[1]), "timeout")
-		if String(i[0]) == "Monster2":
-			var new_enemy2 = enemy2.instance()
-			map_node.get_node("TopRightPath").add_child(new_enemy2, true)
-			yield(get_tree().create_timer(i[1]), "timeout")
-		if String(i[0]) == "Monster3":
-			var new_enemy3 = enemy3.instance()
-			map_node.get_node("BottomLeftPath").add_child(new_enemy3, true)
-			yield(get_tree().create_timer(i[1]), "timeout")
-		if String(i[0]) == "Monster4":
-			var new_enemy4 = enemy4.instance()
-			map_node.get_node("BottomRightPath").add_child(new_enemy4, true)
-			yield(get_tree().create_timer(i[1]), "timeout")
+	$TheChain.play()
 
 
 
+func _on_TheChain_whole_beat(number, exact_msec):
+	if (number % 2 == 0 && number < 63):
+		var new_enemy = enemy1.instance()
+		map_node.get_node("Path").add_child(new_enemy, true)
+	elif (number % 2 == 0 && number > 64 && number < 128):
+		var new_enemy = enemy1.instance()
+		map_node.get_node("Path").add_child(new_enemy, true)
+	elif (number % 2 == 1 && number > 129 && number < 155):
+		var new_enemy = enemy1.instance()
+		map_node.get_node("Path").add_child(new_enemy, true)
+	elif (number % 2 == 1 && number > 154 && number < 158):
+		var new_enemy = enemy1.instance()
+		map_node.get_node("Path").add_child(new_enemy, true)
+	elif (number % 2 == 1 && number > 161 && number < 191):
+		var new_enemy = enemy1.instance()
+		map_node.get_node("Path").add_child(new_enemy, true)
+	elif (number % 2 == 1 && number > 209 && number < 224):
+		var new_enemy = enemy1.instance()
+		map_node.get_node("Path").add_child(new_enemy, true)
+	elif (number % 2 == 1 && number > 225 && number < 257):
+		var new_enemy = enemy1.instance()
+		map_node.get_node("Path").add_child(new_enemy, true)
+	elif (number % 2 == 1 && number > 257 && number < 321):
+		var new_enemy = enemy1.instance()
+		map_node.get_node("Path").add_child(new_enemy, true)
+	elif (number % 2 == 0 && number > 322 && number < 346):
+		var new_enemy = enemy1.instance()
+		map_node.get_node("Path").add_child(new_enemy, true)
+	elif (number % 2 == 0 && number > 347 && number < 352):
+		var new_enemy = enemy1.instance()
+		map_node.get_node("Path").add_child(new_enemy, true)
+	elif (number % 2 == 0 && number > 355 && number < 384):
+		var new_enemy = enemy1.instance()
+		map_node.get_node("Path").add_child(new_enemy, true)
+	elif (number % 2 == 0 && number > 388 && number < 414):
+		var new_enemy = enemy1.instance()
+		map_node.get_node("Path").add_child(new_enemy, true)
 
-func _on_SongTimer_timeout():
-	drums.ready = true
-	child_timer.start()
-	timer.stop()
 
 
-func _on_ChildTimer_timeout():
-	drums.ready = false
-	child_timer.stop()
-	timer.start()
+func _on_TheChain_third_beat(number, exact_msec):
+	if (number > 457 && number < 460):
+		var new_enemy = enemy1.instance()
+		map_node.get_node("Path").add_child(new_enemy, true)
+	elif (number > 474 && number < 487):
+		var new_enemy = enemy1.instance()
+		map_node.get_node("Path").add_child(new_enemy, true)
+	elif (number > 570 && number < 583):
+		var new_enemy = enemy1.instance()
+		map_node.get_node("Path").add_child(new_enemy, true)
+	elif(number > 1035 && number < 1039):
+		var new_enemy = enemy1.instance()
+		map_node.get_node("Path").add_child(new_enemy, true)
+	elif (number > 1053 && number < 1067):
+		var new_enemy = enemy1.instance()
+		map_node.get_node("Path").add_child(new_enemy, true)
+	elif (number > 1148 && number < 1163):
+		var new_enemy = enemy1.instance()
+		map_node.get_node("Path").add_child(new_enemy, true)
+	elif (number > 1238 && number < 1260):
+		var new_enemy = enemy1.instance()
+		map_node.get_node("Path").add_child(new_enemy, true)
+	elif (exact_msec > 195000):
+		$TheChain.stop()
 
 
-func _on_SongStart_timeout():
-	$AudioStreamPlayer2D.play()
-	song_start.stop()
-
-
-func _on_BeatKeeper_whole_beat(number, exact_msec):
-	var new_enemy = enemy1.instance()
-	map_node.get_node("Path").add_child(new_enemy, true)
-
+func _on_TheChain_half_beat(number, exact_msec):
+	if (number == 256 || number == 257):
+		var new_enemy = enemy1.instance()
+		map_node.get_node("Path").add_child(new_enemy, true)
+	elif (number == 642 || number == 643 || number == 644):
+		var new_enemy = enemy1.instance()
+		map_node.get_node("Path").add_child(new_enemy, true)

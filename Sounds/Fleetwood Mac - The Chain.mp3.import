@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Fleetwood Mac - The Chain.mp3-aa33036d03ce120bb59012ef449ade85.mp3str"
+
+[deps]
+
+source_file="res://Sounds/Fleetwood Mac - The Chain.mp3"
+dest_files=[ "res://.import/Fleetwood Mac - The Chain.mp3-aa33036d03ce120bb59012ef449ade85.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

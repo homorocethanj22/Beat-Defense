@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scenes/UI3.gd" type="Script" id=1]
 [ext_resource path="res://Maps/Map4.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Assets/UI/Input/right.png" type="Texture" id=6]
 [ext_resource path="res://Assets/UI/Input/pause.png" type="Texture" id=7]
 [ext_resource path="res://addons/beatkeeper/beatkeeper_node.gd" type="Script" id=8]
+[ext_resource path="res://Sounds/Michael Jackson - Billie Jean.mp3" type="AudioStream" id=9]
 [ext_resource path="res://Scenes/GameScene3.gd" type="Script" id=10]
 
 [node name="GameScene4" type="Node"]
@@ -70,10 +71,13 @@ size_flags_vertical = 4
 texture_normal = ExtResource( 3 )
 expand = true
 
-[node name="BeatKeeper" type="AudioStreamPlayer" parent="."]
+[node name="BillieJean" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
 script = ExtResource( 8 )
-Tempo = 88.0
-Offset_in_MS = 500
+Tempo = 117.0
+PlayDelay_MS = 850
+half_beats = true
+third_beats = true
 
 [node name="Map4" parent="." instance=ExtResource( 2 )]
 
@@ -82,4 +86,6 @@ position = Vector2( 508, 255 )
 
 [connection signal="pressed" from="UI3/HUD/GameControls/PausePlay" to="UI3" method="_on_PausePlay_pressed"]
 [connection signal="pressed" from="UI3/HUD/GameControls/SpeedUp" to="UI3" method="_on_SpeedUp_pressed"]
-[connection signal="whole_beat" from="BeatKeeper" to="." method="_on_BeatKeeper_whole_beat"]
+[connection signal="half_beat" from="BillieJean" to="." method="_on_BeatKeeper_half_beat"]
+[connection signal="third_beat" from="BillieJean" to="." method="_on_BillieJean_third_beat"]
+[connection signal="whole_beat" from="BillieJean" to="." method="_on_BeatKeeper_whole_beat"]
