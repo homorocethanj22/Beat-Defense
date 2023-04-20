@@ -60,7 +60,7 @@ func play_cymbals():
 		textbox.visible = true
 		yield(get_tree().create_timer(0.02), "timeout")
 		textbox.visible = false
-		#$RecordScratch.play()
+		$RecordScratch.play()
 
 
 
