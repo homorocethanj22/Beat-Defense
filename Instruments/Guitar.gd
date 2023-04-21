@@ -27,15 +27,14 @@ func play_guitar():
 	add_child(textbox)
 
 	$Guitar.play("beat")
-
-	#var sound_wave = soundWavePath.instance()
-	#add_child(sound_wave)
-	#sound_wave.position = $Guitar/SoundWaveOrigin.position
-	#sound_wave.key_stroke()
 	
 	if (len(enemyList) != 0):
+		var enemy = enemyList.pop_at(0)
+		perfect = enemy[3]
+		good = enemy[2]
+		okay = enemy[1]
 		if (perfect):
-			currentEnemy = enemyList.pop_at(0)
+			currentEnemy = enemy[0]
 			currentEnemy.hit(3)
 			textbox.set_text("PERFECT!")
 			textbox.visible = true
@@ -43,7 +42,7 @@ func play_guitar():
 			textbox.visible = false
 			print("perfect")
 		elif (good):
-			currentEnemy = enemyList.pop_at(0)
+			currentEnemy = enemy[0]
 			currentEnemy.hit(2)
 			textbox.set_text("GOOD!")
 			textbox.visible = true
@@ -51,7 +50,7 @@ func play_guitar():
 			textbox.visible = false
 			print("good")
 		elif(okay):
-			currentEnemy = enemyList.pop_at(0)
+			currentEnemy = enemy[0]
 			currentEnemy.hit(1)
 			textbox.set_text("OKAY!")
 			textbox.visible = true
@@ -66,9 +65,6 @@ func play_guitar():
 		textbox.visible = false
 		$RecordScratch.play()
 		
-
-	#sound_wave.free()
-
 	$Guitar.frame = 0
 	ready = true
 
@@ -79,31 +75,35 @@ func play_guitar():
 
 func _on_OkayArea_body_entered(body):
 	if ("Monster" in body.get_parent().name):
-		okay = true
-		enemyList.append(body.get_parent())
-
+		enemyList.append([body.get_parent(), true, false, false])
 
 func _on_OkayArea_body_exited(body):
 	if ("Monster" in body.get_parent().name):
-		okay = false
 		enemyList.pop_at(0)
 
 
 func _on_GoodArea_body_entered(body):
 	if ("Monster" in body.get_parent().name):
-		good = true
+		var index = 0
+		while (index < len(enemyList) && enemyList[index][2]):
+			index += 1
+		if (index < len(enemyList)):
+			enemyList[index][2] = true
 
 
 func _on_GoodArea_body_exited(body):
 	if ("Monster" in body.get_parent().name):
-		good = false
+		var index = 0
+		while (index < len(enemyList) && !enemyList[index][2]):
+			index += 1
+		if (index < len(enemyList)):
+			enemyList[index][2] = false
 
 
 func _on_PerfectArea_body_entered(body):
 	if ("Monster" in body.get_parent().name):
-		perfect = true
-
-
-func _on_PerfectArea_body_exited(body):
-	if ("Monster" in body.get_parent().name):
-		perfect = false
+		var index = 0
+		while (index < len(enemyList) && enemyList[index][3]):
+			index += 1
+		if (index < len(enemyList)):
+			enemyList[index][3] = true
