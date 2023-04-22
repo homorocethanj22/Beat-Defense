@@ -1,5 +1,6 @@
 extends Node2D
 
+signal hit_key(points)
 
 var ready = true
 
@@ -9,6 +10,19 @@ var okay = false
 
 var enemyList = []
 var currentEnemy = null
+
+var streak = 0
+
+func combo(perf):
+	if (perf):
+		streak += 1
+		if (streak == 10):
+			print("Cymbals Streak")
+	else:
+		if (streak >= 10):
+			print("End Cymbals Streak")
+		streak = 0
+
 
 const soundWavePath = preload("res://Instruments/SoundWave.tscn")
 
@@ -38,7 +52,8 @@ func play_cymbals():
 			textbox.visible = true
 			yield(get_tree().create_timer(0.02), "timeout")
 			textbox.visible = false
-			print("perfect")
+			combo(true)
+			emit_signal("hit_key", 3)
 		elif (good):
 			currentEnemy = enemy[0]
 			currentEnemy.hit(2)
@@ -46,7 +61,8 @@ func play_cymbals():
 			textbox.visible = true
 			yield(get_tree().create_timer(0.02), "timeout")
 			textbox.visible = false
-			print("good")
+			combo(false)
+			emit_signal("hit_key", 2)
 		elif(okay):
 			currentEnemy = enemy[0]
 			currentEnemy.hit(1)
@@ -54,9 +70,10 @@ func play_cymbals():
 			textbox.visible = true
 			yield(get_tree().create_timer(0.02), "timeout")
 			textbox.visible = false
-			print("okay")
+			combo(false)
+			emit_signal("hit_key", 1)
 	else:
-		print("missed...")
+		combo(false)
 		textbox.set_text("MISSED!")
 		textbox.visible = true
 		yield(get_tree().create_timer(0.02), "timeout")

@@ -2,8 +2,10 @@ extends Node
 
 var map_node
 var drums
-var last_msec = 0
 
+var total = -1
+var final_score = 0
+var score = 0
 ## Enemies/Monsters
 var enemy1 = preload("res://Monster/Monster.tscn")
 var enemy2 = preload("res://Monster/Monster2.tscn")
@@ -21,8 +23,7 @@ func _on_BeatKeeper_whole_beat(number, exact_msec):
 	var e = enemy1.instance()
 	if number % 2 != 0 :
 		map_node.get_node("TopLeftPath").add_child(new_enemy, true) # drums
-	print(number)
-	last_msec = exact_msec
+
 
 func _on_BeatKeeper_half_beat(number, exact_msec):
 	var e = enemy4.instance()
@@ -30,3 +31,8 @@ func _on_BeatKeeper_half_beat(number, exact_msec):
 		map_node.get_node("BottomRightPath").add_child(e, true) # cymbals
 	if number > 200 && number < 344 && number % 3 == 0:
 			map_node.get_node("BottomRightPath").add_child(e, true) # cymbals
+
+
+func _on_Map2_hit_key(points):
+	score += points
+	print(score)

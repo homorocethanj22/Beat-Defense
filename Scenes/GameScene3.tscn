@@ -78,13 +78,14 @@ Offset_in_MS = 500
 half_beats = true
 quarter_beats = true
 
-[node name="Map3" parent="." instance=ExtResource( 11 )]
-
 [node name="House" parent="." instance=ExtResource( 5 )]
 position = Vector2( 508, 255 )
+
+[node name="Map3" parent="." instance=ExtResource( 11 )]
 
 [connection signal="pressed" from="UI3/HUD/GameControls/PausePlay" to="UI3" method="_on_PausePlay_pressed"]
 [connection signal="pressed" from="UI3/HUD/GameControls/SpeedUp" to="UI3" method="_on_SpeedUp_pressed"]
 [connection signal="half_beat" from="BeatKeeper" to="." method="_on_BeatKeeper_half_beat"]
 [connection signal="quarter_beat" from="BeatKeeper" to="." method="_on_BeatKeeper_quarter_beat"]
 [connection signal="whole_beat" from="BeatKeeper" to="." method="_on_BeatKeeper_whole_beat"]
+[connection signal="hit_key" from="Map3" to="." method="_on_Map3_hit_key"]

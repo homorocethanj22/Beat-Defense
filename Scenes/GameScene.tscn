@@ -78,7 +78,6 @@ position = Vector2( 605, 341 )
 
 [node name="TheChain" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
-volume_db = -80.0
 script = ExtResource( 11 )
 Tempo = 152.0
 PlayDelay_MS = 6700
@@ -87,6 +86,7 @@ third_beats = true
 
 [connection signal="pressed" from="UI/HUD/GameControls/PausePlay" to="UI" method="_on_PausePlay_pressed"]
 [connection signal="pressed" from="UI/HUD/GameControls/SpeedUp" to="UI" method="_on_SpeedUp_pressed"]
+[connection signal="hit_key" from="Map1" to="." method="_on_Map1_hit_key"]
 [connection signal="half_beat" from="TheChain" to="." method="_on_TheChain_half_beat"]
 [connection signal="third_beat" from="TheChain" to="." method="_on_TheChain_third_beat"]
 [connection signal="whole_beat" from="TheChain" to="." method="_on_TheChain_whole_beat"]

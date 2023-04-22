@@ -86,6 +86,7 @@ quarter_beats = true
 
 [connection signal="pressed" from="UI2/HUD/GameControls/PausePlay" to="UI2" method="_on_PausePlay_pressed"]
 [connection signal="pressed" from="UI2/HUD/GameControls/SpeedUp" to="UI2" method="_on_SpeedUp_pressed"]
+[connection signal="hit_key" from="Map2" to="." method="_on_Map2_hit_key"]
 [connection signal="half_beat" from="BeatKeeper" to="." method="_on_BeatKeeper_half_beat"]
 [connection signal="quarter_beat" from="BeatKeeper" to="." method="_on_BeatKeeper_quarter_beat"]
 [connection signal="whole_beat" from="BeatKeeper" to="." method="_on_BeatKeeper_whole_beat"]

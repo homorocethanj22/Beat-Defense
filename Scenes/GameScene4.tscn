@@ -89,3 +89,4 @@ position = Vector2( 508, 255 )
 [connection signal="half_beat" from="BillieJean" to="." method="_on_BeatKeeper_half_beat"]
 [connection signal="third_beat" from="BillieJean" to="." method="_on_BillieJean_third_beat"]
 [connection signal="whole_beat" from="BillieJean" to="." method="_on_BeatKeeper_whole_beat"]
+[connection signal="hit_key" from="Map4" to="." method="_on_Map4_hit_key"]

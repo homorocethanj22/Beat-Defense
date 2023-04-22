@@ -1,5 +1,6 @@
 extends Node2D
 
+signal hit_key(points)
 
 var ready = true
 
@@ -9,6 +10,7 @@ var okay = false
 
 var enemyList = []
 var currentEnemy = null
+var streak = 0
 
 const soundWavePath = preload("res://Instruments/SoundWave.tscn")
 
@@ -18,6 +20,15 @@ func _unhandled_key_input(event):
 	if event.is_action_pressed("play_guitar") and ready == true:
 		play_guitar()
 
+func combo(perf):
+	if (perf):
+		streak += 1
+		if (streak == 10):
+			print("Guitar Streak")
+	else:
+		if (streak >= 10):
+			print("End Guitar Streak")
+		streak = 0
 
 func play_guitar():
 	ready = false
@@ -40,7 +51,8 @@ func play_guitar():
 			textbox.visible = true
 			yield(get_tree().create_timer(0.02), "timeout")
 			textbox.visible = false
-			print("perfect")
+			combo(true)
+			emit_signal("hit_key", 3)
 		elif (good):
 			currentEnemy = enemy[0]
 			currentEnemy.hit(2)
@@ -48,7 +60,8 @@ func play_guitar():
 			textbox.visible = true
 			yield(get_tree().create_timer(0.02), "timeout")
 			textbox.visible = false
-			print("good")
+			combo(false)
+			emit_signal("hit_key", 2)
 		elif(okay):
 			currentEnemy = enemy[0]
 			currentEnemy.hit(1)
@@ -56,9 +69,10 @@ func play_guitar():
 			textbox.visible = true
 			yield(get_tree().create_timer(0.02), "timeout")
 			textbox.visible = false
-			print("okay")
+			combo(false)
+			emit_signal("hit_key", 1)
 	else:
-		print("missed...")
+		combo(false)
 		textbox.set_text("MISSED!")
 		textbox.visible = true
 		yield(get_tree().create_timer(0.02), "timeout")

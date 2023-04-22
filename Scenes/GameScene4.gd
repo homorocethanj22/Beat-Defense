@@ -2,9 +2,12 @@ extends Node
 
 var map_node
 var drums
-var last_msec = 0
-var val = 0
-var count = 0
+
+var total = -1
+var final_score = 0
+var score = 0
+
+
 
 ## Enemies/Monsters
 var enemy1 = preload("res://Monster/Monster.tscn")
@@ -54,4 +57,9 @@ func _on_BillieJean_third_beat(number, exact_msec):
 	elif (number > 473 && number < 478):
 		var new_enemy = enemy4.instance()
 		map_node.get_node("TopRightPath").add_child(new_enemy, true)
-	print(number)
+
+
+
+func _on_Map4_hit_key(points):
+	score += points
+	print(score)

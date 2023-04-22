@@ -2,7 +2,9 @@ extends Node
 
 var map_node
 var drums
-var last_msec = 0
+var total = 792
+var final_score = 0
+var score = 0
 
 ## Enemies/Monsters
 var enemy1 = preload("res://Monster/Monster.tscn")
@@ -90,3 +92,8 @@ func _on_TheChain_half_beat(number, exact_msec):
 	elif (number == 642 || number == 643 || number == 644):
 		var new_enemy = enemy1.instance()
 		map_node.get_node("Path").add_child(new_enemy, true)
+
+
+func _on_Map1_hit_key(points):
+	score += points
+	print(score)

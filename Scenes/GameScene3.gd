@@ -6,6 +6,10 @@ var last_msec = 0
 var pause_bool = false
 var pos
 
+var total = -1
+var final_score = 0
+var score = 0
+
 ## Enemies/Monsters
 var enemy1 = preload("res://Monster/Monster.tscn")
 var enemy2 = preload("res://Monster/Monster2.tscn")
@@ -39,7 +43,6 @@ func _on_BeatKeeper_whole_beat(number, exact_msec):
 	if number % 2 != 0 && number > 11:
 		if number != 43:
 			map_node.get_node("TopLeftPath").add_child(e, true) # drums
-	print(number) # 170 is about 2 minutes // Stop here
 
 
 func _on_BeatKeeper_quarter_beat(number, exact_msec):
@@ -59,3 +62,8 @@ func _on_BeatKeeper_half_beat(number, exact_msec):
 	if number % 2 != 0 && number > 22:
 		if number != 84:
 			map_node.get_node("TopRightPath").add_child(e3, true) # keyboard
+
+
+func _on_Map3_hit_key(points):
+	score += points
+	print(score)
