@@ -17,7 +17,10 @@ func _ready():
 	drums = map_node.get_child(3)
 	$TheChain.play()
 
+func endgame():
 
+	final_score = float(score) / total
+	print(stepify(final_score * 100, 0.01))
 
 func _on_TheChain_whole_beat(number, exact_msec):
 	if (number % 2 == 0 && number < 63):
@@ -81,8 +84,10 @@ func _on_TheChain_third_beat(number, exact_msec):
 	elif (number > 1238 && number < 1260):
 		var new_enemy = enemy1.instance()
 		map_node.get_node("Path").add_child(new_enemy, true)
-	elif (exact_msec > 195000):
+	elif (exact_msec > 195000 && exact_msec < 195132):
 		$TheChain.stop()
+		print(exact_msec)
+		endgame()
 
 
 func _on_TheChain_half_beat(number, exact_msec):
@@ -96,4 +101,3 @@ func _on_TheChain_half_beat(number, exact_msec):
 
 func _on_Map1_hit_key(points):
 	score += points
-	print(score)
