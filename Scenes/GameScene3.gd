@@ -6,7 +6,7 @@ var last_msec = 0
 var pause_bool = false
 var pos
 
-var total = -1
+var total = 1173
 var final_score = 0
 var score = 0
 
@@ -36,34 +36,43 @@ func pause():
 		pause_bool = false
 		get_tree().paused = false;
 
-
+func endgame():
+	final_score = float(score) / total
+	print(stepify(final_score * 100, 0.01))
 
 func _on_BeatKeeper_whole_beat(number, exact_msec):
 	var e = enemy1.instance()
-	if number % 2 != 0 && number > 11:
+	if number % 2 != 0 && number > 11 && number < 131:
 		if number != 43:
+			total += 1
 			map_node.get_node("TopLeftPath").add_child(e, true) # drums
+	if number == 132:
+		endgame()
+		$BeatKeeper.stop()
 
 
 func _on_BeatKeeper_quarter_beat(number, exact_msec):
 	var e = enemy1.instance()
 	if number % 2 == 0 && number > 174 && number < 336:
+		total += 1
 		map_node.get_node("TopLeftPath").add_child(e, true) # drums
 	if number % 2 == 0 && number > 464 && number < 520:
+		total += 1
 		map_node.get_node("TopLeftPath").add_child(e, true) # drums
 
 
 func _on_BeatKeeper_half_beat(number, exact_msec):
 	var e = enemy2.instance()
 	var e3 = enemy3.instance()
-	if number % 2 == 0 && number > 22:
+	if number % 2 == 0 && number > 22 && number < 250:
 		if number != 84:
+			total += 1
 			map_node.get_node("BottomLeftPath").add_child(e, true) # guitar
-	if number % 2 != 0 && number > 22:
+	if number % 2 != 0 && number > 22 && number < 250:
 		if number != 84:
+			total += 1
 			map_node.get_node("TopRightPath").add_child(e3, true) # keyboard
 
 
 func _on_Map3_hit_key(points):
 	score += points
-	print(score)

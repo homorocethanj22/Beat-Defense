@@ -3,7 +3,7 @@ extends Node
 var map_node
 var drums
 
-var total = -1
+var total = 1161
 var final_score = 0
 var score = 0
 
@@ -20,24 +20,36 @@ func _ready():
 	drums = map_node.get_child(3)
 	$BillieJean.play();
 
+func endgame():
+	final_score = float(score) / total
+	print(stepify(final_score * 100, 0.01))
 
 func _on_BeatKeeper_whole_beat(number, exact_msec):
-	var new_enemy = enemy1.instance()
-	map_node.get_node("TopLeftPath").add_child(new_enemy, true)
+	if (number < 255):
+		var new_enemy = enemy1.instance()
+		total += 1
+		map_node.get_node("TopLeftPath").add_child(new_enemy, true)
+	if (number == 261):
+		endgame()
+		$BillieJean.stop()
 
 
 func _on_BeatKeeper_half_beat(number, exact_msec):
 	if (number % 4 == 0 && number > 79 && number < 272):
 		var new_enemy = enemy3.instance()
+		total += 1
 		map_node.get_node("BottomRightPath").add_child(new_enemy, true)
 	elif (number % 4 == 0 && number > 335 && number < 368):
-			var new_enemy = enemy3.instance()
-			map_node.get_node("BottomRightPath").add_child(new_enemy, true)
+		var new_enemy = enemy3.instance()
+		total += 1
+		map_node.get_node("BottomRightPath").add_child(new_enemy, true)
 	elif (number % 4 == 0 && number > 383 && number < 397):
 		var new_enemy = enemy3.instance()
+		total += 1
 		map_node.get_node("BottomRightPath").add_child(new_enemy, true)
-	elif (number % 4 == 0 && number > 415):
+	elif (number % 4 == 0 && number > 415 && number < 510):
 		var new_enemy = enemy3.instance()
+		total += 1
 		map_node.get_node("BottomRightPath").add_child(new_enemy, true)
 
 
@@ -47,19 +59,22 @@ func _on_BeatKeeper_half_beat(number, exact_msec):
 func _on_BillieJean_third_beat(number, exact_msec):
 	if (number % 3 != 2 && number > 550 && number < 578):
 		var new_enemy = enemy2.instance()
+		total += 1
 		map_node.get_node("BottomLeftPath").add_child(new_enemy, true)
 	elif(number % 3 != 2 && number > 599 && number < 627):
 		var new_enemy = enemy2.instance()
+		total += 1
 		map_node.get_node("BottomLeftPath").add_child(new_enemy, true)
 	elif (number == 406 || number == 430 || number == 454 || number == 478 || number == 484 || number == 490 || number == 496 || number == 502 || number == 504):
 		var new_enemy = enemy4.instance()
+		total += 1
 		map_node.get_node("TopRightPath").add_child(new_enemy, true)
 	elif (number > 473 && number < 478):
 		var new_enemy = enemy4.instance()
+		total += 1
 		map_node.get_node("TopRightPath").add_child(new_enemy, true)
 
 
 
 func _on_Map4_hit_key(points):
 	score += points
-	print(score)

@@ -18,7 +18,6 @@ func _ready():
 	$TheChain.play()
 
 func endgame():
-
 	final_score = float(score) / total
 	print(stepify(final_score * 100, 0.01))
 
