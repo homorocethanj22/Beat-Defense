@@ -15,6 +15,14 @@ var streak = 0
 const soundWavePath = preload("res://Instruments/SoundWave.tscn")
 
 var textbox_scene = preload("res://Scenes/Textbox.tscn")
+var textbox = null
+onready var text_timer = get_node("TextTimer")
+
+
+func _ready():
+	text_timer.set_wait_time(0.2)
+
+
 
 func _unhandled_key_input(event):
 	if event.is_action_pressed("play_guitar") and ready == true:
@@ -34,7 +42,11 @@ func combo(perf):
 func play_guitar():
 	ready = false
 	
-	var textbox = textbox_scene.instance()
+	if (textbox != null && textbox.visible):
+		textbox.visible = false
+		textbox = null
+	
+	textbox = textbox_scene.instance()
 	textbox.position = get_parent().position + Vector2(-70, -60)
 	add_child(textbox)
 	
@@ -48,8 +60,7 @@ func play_guitar():
 			currentEnemy.hit(3)
 			textbox.set_text("PERFECT!")
 			textbox.visible = true
-			yield(get_tree().create_timer(0.02), "timeout")
-			textbox.visible = false
+			text_timer.start()
 			combo(true)
 			emit_signal("hit_key", 3)
 		elif (good):
@@ -58,8 +69,7 @@ func play_guitar():
 			currentEnemy.hit(2)
 			textbox.set_text("GOOD!")
 			textbox.visible = true
-			yield(get_tree().create_timer(0.02), "timeout")
-			textbox.visible = false
+			text_timer.start()
 			combo(false)
 			emit_signal("hit_key", 2)
 		elif(okay):
@@ -68,8 +78,7 @@ func play_guitar():
 			currentEnemy.hit(1)
 			textbox.set_text("OKAY!")
 			textbox.visible = true
-			yield(get_tree().create_timer(0.02), "timeout")
-			textbox.visible = false
+			text_timer.start()
 			combo(false)
 			emit_signal("hit_key", 1)
 	else:
@@ -77,8 +86,7 @@ func play_guitar():
 		combo(false)
 		textbox.set_text("MISSED!")
 		textbox.visible = true
-		yield(get_tree().create_timer(0.02), "timeout")
-		textbox.visible = false
+		text_timer.start()
 		$RecordScratch.play()
 		
 	$Guitar.frame = 0
@@ -123,3 +131,8 @@ func _on_PerfectArea_body_entered(body):
 			index += 1
 		if (index < len(enemyList)):
 			enemyList[index][3] = true
+
+
+func _on_TextTimer_timeout():
+	textbox.visible = false
+	text_timer.stop()
