@@ -7,6 +7,8 @@ var health = 3
 func _physics_process(delta):
 	offset += speed * delta
 	$KinematicBody2D/AnimatedSprite.play("walk")
+	if (health < 3):
+		$KinematicBody2D/AnimatedSprite.play("Damage Walk")
 
 
 func hit(damage):
