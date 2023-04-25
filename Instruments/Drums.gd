@@ -25,6 +25,7 @@ func combo(perf):
 		streak += 1
 		if (streak == 10):
 			print("Drums Streak")
+			$Drums.play("combo")
 	else:
 		if (streak >= 10):
 			print("End Drums Streak")
@@ -38,7 +39,6 @@ func play_drums():
 	textbox.position = get_parent().position + Vector2(-70, -60)
 	add_child(textbox)
 
-	$Drums.play("beat")
 	
 	if (len(enemyList) != 0):
 		var enemy = enemyList.pop_at(0)
@@ -55,6 +55,7 @@ func play_drums():
 			combo(true)
 			emit_signal("hit_key", 3)
 		elif (good):
+			$Drums.play("beat")
 			currentEnemy = enemy[0]
 			currentEnemy.hit(2)
 			textbox.set_text("GOOD!")
@@ -64,6 +65,7 @@ func play_drums():
 			combo(false)
 			emit_signal("hit_key", 2)
 		elif(okay):
+			$Drums.play("beat")
 			currentEnemy = enemy[0]
 			currentEnemy.hit(1)
 			textbox.set_text("OKAY!")
@@ -73,6 +75,7 @@ func play_drums():
 			combo(false)
 			emit_signal("hit_key", 1)
 	else:
+		$Drums.play("beat")
 		combo(false)
 		textbox.set_text("MISSED!")
 		textbox.visible = true
