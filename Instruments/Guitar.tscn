@@ -75,9 +75,12 @@ position = Vector2( 0, 56.5 )
 scale = Vector2( 0.583333, 0.398438 )
 texture = ExtResource( 6 )
 
+[node name="TextTimer" type="Timer" parent="."]
+
 [connection signal="body_entered" from="OkayArea" to="." method="_on_OkayArea_body_entered"]
 [connection signal="body_exited" from="OkayArea" to="." method="_on_OkayArea_body_exited"]
 [connection signal="body_entered" from="GoodArea" to="." method="_on_GoodArea_body_entered"]
 [connection signal="body_exited" from="GoodArea" to="." method="_on_GoodArea_body_exited"]
 [connection signal="body_entered" from="PerfectArea" to="." method="_on_PerfectArea_body_entered"]
 [connection signal="body_exited" from="PerfectArea" to="." method="_on_PerfectArea_body_exited"]
+[connection signal="timeout" from="TextTimer" to="." method="_on_TextTimer_timeout"]
