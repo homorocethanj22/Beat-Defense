@@ -10,7 +10,6 @@ var okay = false
 
 var enemyList = []
 var currentEnemy = null
-
 var streak = 0
 
 func combo(perf):
@@ -18,6 +17,7 @@ func combo(perf):
 		streak += 1
 		if (streak == 10):
 			print("Cymbals Streak")
+			$Cymbals.play("combo")
 	else:
 		if (streak >= 10):
 			print("End Cymbals Streak")
@@ -55,6 +55,7 @@ func play_cymbals():
 			combo(true)
 			emit_signal("hit_key", 3)
 		elif (good):
+			$Cymbals.play("beat")
 			currentEnemy = enemy[0]
 			currentEnemy.hit(2)
 			textbox.set_text("GOOD!")
@@ -64,6 +65,7 @@ func play_cymbals():
 			combo(false)
 			emit_signal("hit_key", 2)
 		elif(okay):
+			$Cymbals.play("beat")
 			currentEnemy = enemy[0]
 			currentEnemy.hit(1)
 			textbox.set_text("OKAY!")
@@ -73,6 +75,7 @@ func play_cymbals():
 			combo(false)
 			emit_signal("hit_key", 1)
 	else:
+		$Cymbals.play("beat")
 		combo(false)
 		textbox.set_text("MISSED!")
 		textbox.visible = true
@@ -80,8 +83,7 @@ func play_cymbals():
 		textbox.visible = false
 		$RecordScratch.play()
 
-	#$Cymbals.frame = 0
-
+	$Cymbals.frame = 0
 	ready = true
 
 

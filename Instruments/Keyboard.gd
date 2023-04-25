@@ -24,6 +24,7 @@ func combo(perf):
 	if (perf):
 		streak += 1
 		if (streak == 10):
+			$Keyboard.play("combo")
 			print("Keyboard Streak")
 	else:
 		if (streak >= 10):
@@ -52,6 +53,7 @@ func play_keyboard():
 			combo(true)
 			emit_signal("hit_key", 3)
 		elif (good):
+			$Keyboard.play("beat")
 			currentEnemy = enemy[0]
 			currentEnemy.hit(2)
 			textbox.set_text("GOOD!")
@@ -61,6 +63,7 @@ func play_keyboard():
 			combo(false)
 			emit_signal("hit_key", 2)
 		elif(okay):
+			$Keyboard.play("beat")
 			currentEnemy = enemy[0]
 			currentEnemy.hit(1)
 			textbox.set_text("OKAY!")
@@ -70,6 +73,7 @@ func play_keyboard():
 			combo(false)
 			emit_signal("hit_key", 1)
 	else:
+		$Keyboard.play("beat")
 		combo(false)
 		textbox.set_text("MISSED!")
 		textbox.visible = true
@@ -77,7 +81,7 @@ func play_keyboard():
 		textbox.visible = false
 		$RecordScratch.play()
 
-	#$Keyboard.frame = 0
+	$Keyboard.frame = 0
 
 	ready = true
 

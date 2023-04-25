@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Instruments/Keyboard.gd" type="Script" id=1]
 [ext_resource path="res://Instruments/Assets/piano sprite f1.png" type="Texture" id=2]
@@ -6,12 +6,20 @@
 [ext_resource path="res://Instruments/Assets/piano sprite f2.png" type="Texture" id=4]
 [ext_resource path="res://Sounds/Short_Record_Scratch.mp3" type="AudioStream" id=5]
 [ext_resource path="res://Instruments/Assets/hit_box.png" type="Texture" id=6]
+[ext_resource path="res://Instruments/Assets/piano combo f3.png" type="Texture" id=7]
+[ext_resource path="res://Instruments/Assets/piano combo f1.png" type="Texture" id=8]
+[ext_resource path="res://Instruments/Assets/piano combo f2.png" type="Texture" id=9]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 2 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 2 ) ],
 "loop": false,
 "name": "beat",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 8 ) ],
+"loop": false,
+"name": "combo",
 "speed": 10.0
 }, {
 "frames": [ ExtResource( 2 ) ],

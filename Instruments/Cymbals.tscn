@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Instruments/Cymbals.gd" type="Script" id=1]
 [ext_resource path="res://Instruments/Assets/cymbals sprite f3.png" type="Texture" id=2]
@@ -6,6 +6,9 @@
 [ext_resource path="res://Instruments/Assets/cymbals sprite f2.png" type="Texture" id=4]
 [ext_resource path="res://Sounds/Short_Record_Scratch.mp3" type="AudioStream" id=5]
 [ext_resource path="res://Instruments/Assets/hit_box.png" type="Texture" id=6]
+[ext_resource path="res://Instruments/Assets/cymbals combo f2.png" type="Texture" id=7]
+[ext_resource path="res://Instruments/Assets/cymbals combo f3.png" type="Texture" id=8]
+[ext_resource path="res://Instruments/Assets/cymbals combo f1.png" type="Texture" id=9]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -14,8 +17,13 @@ animations = [ {
 "name": "beat",
 "speed": 13.0
 }, {
+"frames": [ ExtResource( 9 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 7 ) ],
+"loop": false,
+"name": "combo",
+"speed": 13.0
+}, {
 "frames": [ ExtResource( 4 ) ],
-"loop": true,
+"loop": false,
 "name": "still",
 "speed": 5.0
 } ]

@@ -25,6 +25,7 @@ func combo(perf):
 		streak += 1
 		if (streak == 10):
 			print("Guitar Streak")
+			$Guitar.play("combo")
 	else:
 		if (streak >= 10):
 			print("End Guitar Streak")
@@ -36,8 +37,6 @@ func play_guitar():
 	var textbox = textbox_scene.instance()
 	textbox.position = get_parent().position + Vector2(-70, -60)
 	add_child(textbox)
-
-	$Guitar.play("beat")
 	
 	if (len(enemyList) != 0):
 		var enemy = enemyList.pop_at(0)
@@ -54,6 +53,7 @@ func play_guitar():
 			combo(true)
 			emit_signal("hit_key", 3)
 		elif (good):
+			$Guitar.play("beat")
 			currentEnemy = enemy[0]
 			currentEnemy.hit(2)
 			textbox.set_text("GOOD!")
@@ -63,6 +63,7 @@ func play_guitar():
 			combo(false)
 			emit_signal("hit_key", 2)
 		elif(okay):
+			$Guitar.play("beat")
 			currentEnemy = enemy[0]
 			currentEnemy.hit(1)
 			textbox.set_text("OKAY!")
@@ -72,6 +73,7 @@ func play_guitar():
 			combo(false)
 			emit_signal("hit_key", 1)
 	else:
+		$Guitar.play("beat")
 		combo(false)
 		textbox.set_text("MISSED!")
 		textbox.visible = true
