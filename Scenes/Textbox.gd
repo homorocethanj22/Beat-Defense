@@ -13,6 +13,8 @@ func _ready():
 func set_text(text: String):
 	$Label2.text = text
 	
+func set_rect_size(width: float, height: float):
+	$Label2.rect_size = Vector2(width, height)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass

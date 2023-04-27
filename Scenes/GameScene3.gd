@@ -16,9 +16,33 @@ var enemy2 = preload("res://Monster/Monster2.tscn")
 var enemy3 = preload("res://Monster/Monster3.tscn")
 var enemy4 = preload("res://Monster/Monster4.tscn")
 
+var textbox_scene = preload("res://Scenes/Textbox.tscn")
+var textbox = null
+
 func _ready():
 	map_node = get_node("Map3")
 	drums = map_node.get_child(3)
+	
+	textbox = textbox_scene.instance()
+	textbox.position = Vector2(485, 220)
+	textbox.set_scale(Vector2(3, 3))
+	add_child(textbox)
+	
+	textbox.set_text("3")
+	textbox.visible = true
+	yield(get_tree().create_timer(1), "timeout")
+	textbox.visible = false
+	
+	textbox.set_text("2")
+	textbox.visible = true
+	yield(get_tree().create_timer(1), "timeout")
+	textbox.visible = false
+	
+	textbox.set_text("1")
+	textbox.visible = true
+	yield(get_tree().create_timer(1), "timeout")
+	textbox.visible = false
+	
 	$BeatKeeper.play();
 
 func _input(event):
