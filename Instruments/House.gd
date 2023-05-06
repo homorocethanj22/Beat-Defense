@@ -2,6 +2,7 @@ extends Area2D
 
 onready var h_bar = get_node("HealthBar")
 var health = 100
+signal dead
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -22,3 +23,6 @@ func _on_House_body_entered(body):
 	health = health - body.get_parent().get_health()
 	body.get_parent().free()
 	h_bar.value = health
+	
+	if health <= 0:
+		emit_signal("dead")

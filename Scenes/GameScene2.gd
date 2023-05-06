@@ -16,6 +16,9 @@ var textbox_scene = preload("res://Scenes/Textbox.tscn")
 var textbox = null
 
 func _ready():
+	
+	get_node("House").connect("dead", self, "endgame")
+	
 	map_node = get_node("Map2")
 	drums = map_node.get_child(3)
 	
@@ -44,6 +47,8 @@ func _ready():
 func endgame():
 	final_score = float(score) / total
 	print(stepify(final_score * 100, 0.01))
+	yield(get_tree().create_timer(5), "timeout")
+	get_tree().change_scene("res://Scenes/MainMenu.tscn")
 
 func _on_BeatKeeper_whole_beat(number, exact_msec):
 	var new_enemy = enemy1.instance()
