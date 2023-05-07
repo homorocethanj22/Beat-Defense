@@ -1,5 +1,6 @@
 Welcome to Beat Defense, a music-infused tower defense game where enemies follow the rhythm of a song's beat.
 
+
 Install & Play:
 
 1. Download source code in the form of a .zip file from the gitlab repository.
@@ -27,6 +28,16 @@ Install & Play:
 8. To play the game, click the play button in the top right corner of the Godot Engine window
 
 9. Enjoy!
+
+
+Controls
+
+F key = Play Drums
+D key = Play Guitar
+
+J key = Play Keyboard
+K key = Play Cymbals
+
 
 Credits
 

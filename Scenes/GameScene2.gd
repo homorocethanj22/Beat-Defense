@@ -46,9 +46,9 @@ func _ready():
 
 func endgame():
 	final_score = float(score) / total
-	print(stepify(final_score * 100, 0.01))
+	Global.user_points = stepify(final_score * 100, 0.01)
 	yield(get_tree().create_timer(5), "timeout")
-	get_tree().change_scene("res://Scenes/MainMenu.tscn")
+	get_tree().change_scene("res://Scenes/LevelWinScene.tscn")
 
 func _on_BeatKeeper_whole_beat(number, exact_msec):
 	var new_enemy = enemy1.instance()
@@ -73,3 +73,8 @@ func _on_BeatKeeper_half_beat(number, exact_msec):
 
 func _on_Map2_hit_key(points):
 	score += points
+
+
+func _on_House_dead():
+	$BeatKeeper.stop()
+	get_tree().change_scene("res://Scenes/GameOverScene.tscn")

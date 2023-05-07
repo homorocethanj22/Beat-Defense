@@ -73,6 +73,7 @@ expand = true
 
 [node name="BillieJean" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
+volume_db = -20.248
 script = ExtResource( 8 )
 Tempo = 117.0
 PlayDelay_MS = 850
@@ -90,3 +91,4 @@ position = Vector2( 508, 255 )
 [connection signal="third_beat" from="BillieJean" to="." method="_on_BillieJean_third_beat"]
 [connection signal="whole_beat" from="BillieJean" to="." method="_on_BeatKeeper_whole_beat"]
 [connection signal="hit_key" from="Map4" to="." method="_on_Map4_hit_key"]
+[connection signal="dead" from="House" to="." method="_on_House_dead"]
