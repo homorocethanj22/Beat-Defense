@@ -78,6 +78,7 @@ position = Vector2( 605, 341 )
 
 [node name="TheChain" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
+volume_db = -21.168
 script = ExtResource( 11 )
 Tempo = 152.0
 PlayDelay_MS = 6700

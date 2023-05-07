@@ -114,9 +114,8 @@ func _on_TheChain_third_beat(number, exact_msec):
 	elif (number > 1238 && number < 1260):
 		var new_enemy = enemy1.instance()
 		map_node.get_node("Path").add_child(new_enemy, true)
-	elif (exact_msec > 195000 && exact_msec < 195132):
+	elif (number == 1441):
 		$TheChain.stop()
-		print(exact_msec)
 		endgame()
 
 
