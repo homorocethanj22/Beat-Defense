@@ -66,7 +66,6 @@ func pause():
 func endgame():
 	final_score = float(score) / total
 	Global.user_points = stepify(final_score * 100, 0.01)
-	yield(get_tree().create_timer(5), "timeout")
 	get_tree().change_scene("res://Scenes/LevelWinScene.tscn")
 
 func _on_BeatKeeper_whole_beat(number, exact_msec):

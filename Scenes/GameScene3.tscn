@@ -72,7 +72,6 @@ expand = true
 
 [node name="BeatKeeper" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
-volume_db = -21.168
 script = ExtResource( 8 )
 Tempo = 88.0
 Offset_in_MS = 500

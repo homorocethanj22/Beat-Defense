@@ -73,7 +73,6 @@ expand = true
 
 [node name="BillieJean" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
-volume_db = -20.248
 script = ExtResource( 8 )
 Tempo = 117.0
 PlayDelay_MS = 850
